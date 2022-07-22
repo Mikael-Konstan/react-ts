@@ -1,0 +1,26 @@
+{
+  "en": {
+    "translation": {
+      "language": "Language",
+      "language-select-zh": "Chinese",
+      "language-select-en": "English",
+      "language-select-de": "German"
+    }
+  },
+  "zh": {
+    "translation": {
+      "language": "语言",
+      "language-select-zh": "中文",
+      "language-select-en": "英语",
+      "language-select-de": "德语"
+    }
+  },
+  "de": {
+    "translation": {
+      "language": "Sprache",
+      "language-select-zh": "chinesisch",
+      "language-select-en": "Englisch",
+      "language-select-de": "Deutsch"
+    }
+  }
+}

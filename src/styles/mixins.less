@@ -1,0 +1,191 @@
+// 单行文本超出部分...
+.textOverflow() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+
+// 多行文本超出部分...
+.textOverflowMulti(@line: 3) {
+  word-break: break-all;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: @line;
+  -webkit-box-orient: vertical;
+}
+
+// 清除浮动
+.clearfix() {
+  zoom: 1;
+  &::before,
+  &::after {
+    display: table;
+    content: ' ';
+  }
+  &::after {
+    clear: both;
+    height: 0;
+    font-size: 0;
+    visibility: hidden;
+  }
+}
+
+// 背景图片地址和大小
+.bg(@url, @size: contain) {
+  background-image: url(@url);
+  background-repeat: no-repeat;
+  background-size: @size;
+}
+
+// 定位上下左右居中
+.center() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// 定位上下居中
+.ct() {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+// 定位左右居中
+.cl() {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+// 宽高
+.wh(@width, @height) {
+  width: @width;
+  height: @height;
+}
+
+// 字体大小，颜色
+.sc(@size, @color) {
+  color: @color;
+  font-size: @size;
+}
+
+// flex 布局和 子元素 对其方式
+.fj(@type: space-between) {
+  display: flex;
+  justify-content: @type;
+  align-items: center;
+}
+
+// animation 右侧划进划出
+@translate3dShow: translate3d(calc(-100% - 20px), 0, 0);
+.show(@translate3dShow: @translate3dShow) {
+  -webkit-transform: @translate3dShow;
+  transform: @translate3dShow;
+  opacity: 1;
+}
+.hide() {
+  -webkit-transform: none;
+  transform: none;
+  opacity: 0;
+}
+
+.rightIn {
+  -webkit-animation: rightInFrame 0.3s;
+  animation: rightInFrame 0.3s;
+  -webkit-transform: @translate3dShow;
+  transform: @translate3dShow;
+}
+@keyframes rightInFrame {
+  0% {
+    .hide();
+  }
+  100% {
+    .show();
+  }
+}
+@-webkit-keyframes rightInFrame {
+  0% {
+    .hide();
+  }
+  100% {
+    .show();
+  }
+}
+
+.rightOut {
+  -webkit-animation: rightOutFrame 0.3s;
+  animation: rightOutFrame 0.3s;
+  -webkit-transform: none;
+  transform: none;
+}
+@keyframes rightOutFrame {
+  0% {
+    .show();
+  }
+  100% {
+    .hide();
+  }
+}
+@-webkit-keyframes rightOutFrame {
+  0% {
+    .show();
+  }
+  100% {
+    .hide();
+  }
+}
+
+// animation 淡入淡出
+.fadeShow() {
+  opacity: 1;
+}
+.fadeHide() {
+  opacity: 0;
+}
+
+.fadeIn {
+  -webkit-animation: fadeInFrame 1s;
+  animation: fadeInFrame 1s;
+  opacity: 1;
+}
+@keyframes fadeInFrame {
+  0% {
+    .fadeHide();
+  }
+  100% {
+    .fadeShow();
+  }
+}
+@-webkit-keyframes fadeInFrame {
+  0% {
+    .fadeHide();
+  }
+  100% {
+    .fadeShow();
+  }
+}
+
+.fadeOut {
+  -webkit-animation: fadeOutFrame 0.3s;
+  animation: fadeOutFrame 0.3s;
+  opacity: 0;
+}
+@keyframes fadeOutFrame {
+  0% {
+    .fadeShow();
+  }
+  100% {
+    .fadeHide();
+  }
+}
+@-webkit-keyframes fadeOutFrame {
+  0% {
+    .fadeShow();
+  }
+  100% {
+    .fadeHide();
+  }
+}
