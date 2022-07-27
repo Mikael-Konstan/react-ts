@@ -4,3 +4,8 @@ export enum FieldTypeEnum {
   NUMBER = 'number',
   OTHER = 'other',
 }
+
+export enum ModelsNameSpaceEnum {
+  ABOUT = 'about',
+  FNLIST = 'fnList',
+}

@@ -25,3 +25,7 @@ export const CommonReg: CommonRegKey = {
 export const CommonRegValidate = (key: keyof CommonRegKey, value: string) => {
   return CommonReg[key].test(value);
 };
+
+export const isFn = (fn: any) => {
+  return Object.prototype.toString.call(fn) === '[object Function]';
+};

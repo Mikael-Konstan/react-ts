@@ -1,5 +1,15 @@
 import { FieldTypeEnum } from '@/utils/enum';
 
+// interface declare 样例 start
+interface SubInterface {
+  Test: number;
+}
+interface SupInterface extends React.FC<SubInterface> {
+  Button: string;
+}
+declare const Sup: SupInterface;
+// Sup.Button;
+// end
 export interface CommonRes<T = any> {
   requestId?: number; // 接口请求id
 
@@ -21,3 +31,7 @@ export type FieldType =
   | FieldTypeEnum.DATE
   | FieldTypeEnum.NUMBER
   | FieldTypeEnum.OTHER;
+
+export declare type PayloadAction<P = void> = {
+  payload: P;
+} & {};

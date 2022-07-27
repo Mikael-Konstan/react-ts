@@ -1,4 +1,11 @@
 const Mock = require('mockjs');
+
+const resCommon = {
+  code: 200,
+  success: true,
+  message: 'message',
+};
+
 const data = Mock.mock({
   // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
   'list|1-10': [
@@ -20,14 +27,20 @@ const throttleData = Mock.mock({
   ],
 });
 
+const modelNumber = Mock.mock({
+  'number|1-100': 100,
+});
+
 export default {
   // 支持值为 Object 和 Array
-  'GET /api/users': { users: [1, 2] },
+  'GET /about/modelNumber': {
+    ...resCommon,
+    data: modelNumber.number,
+  },
 
   // GET 可忽略
   '/fnList/throttle/queryList': {
-    code: 200,
-    success: true,
+    ...resCommon,
     message: 'throttle',
     data: throttleData.list,
     total: 86,
