@@ -1,12 +1,12 @@
 import { CSSProperties, FC, useState } from 'react';
-import { history } from 'umi';
 import { Button } from 'antd';
 import styles from './index.less';
 import { FieldTypeEnum } from '@/utils/enum';
 import { FieldListItem } from '@/utils/type';
-import DropDnd from '@/components/Drop-Dnd';
+import { AddFieldModal, useAddFieldModal } from '@/components';
 
-const DropDndComp = () => {
+const CodeMirrorMark = () => {
+  const addField = useAddFieldModal();
   const fieldList: FieldListItem[] = [
     {
       id: 'word',
@@ -30,27 +30,23 @@ const DropDndComp = () => {
       type: FieldTypeEnum.OTHER,
     },
   ];
-  const jumpToStyle = () => {
-    // 传参
-    history.push({
-      pathname: '/fnList/style',
-      query: {
-        a: 'query test',
-      },
-      state: {
-        b: 'state test',
-      },
-    });
+  // 添加字段
+  const addFieldClick = () => {
+    addField.show(fieldList, '');
+  };
+  // 添加字段 确认
+  const AddFieldConfirm = (fieldFormula: string, formulaConfig: string) => {
+    console.log(fieldFormula, formulaConfig);
   };
   return (
     <div>
-      <h1>Drop Dnd Component</h1>
+      <h1>CodeMirror Mark</h1>
       <div>
-        <Button onClick={jumpToStyle}>跳转 传参 接参</Button>
+        <Button onClick={addFieldClick}>CodeMirror 标签</Button>
       </div>
-      <DropDnd></DropDnd>
+      <AddFieldModal {...addField.getProps(AddFieldConfirm)}></AddFieldModal>
     </div>
   );
 };
 
-export default DropDndComp;
+export default CodeMirrorMark;

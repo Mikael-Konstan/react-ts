@@ -1,3 +1,4 @@
+export * from './AddField';
 export * from './icons';
 export * from './IF';
 export * from './Loading';

@@ -31,6 +31,11 @@ const routes = [
         name: '特殊样式',
         icon: <CrownOutlined />,
       },
+      {
+        path: '/fnList/codeMirrorMark',
+        name: 'CodeMirror Mark',
+        icon: <CrownOutlined />,
+      },
     ],
   },
   {

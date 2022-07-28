@@ -7,7 +7,7 @@ import { DropTypes } from './DropTypes';
 import { IconPng } from '@/components';
 import { DragHook } from '@/utils/hooks';
 import { FieldTypeEnum } from '@/utils/enum';
-import { FieldType } from '@/utils/type';
+import { FieldListItem } from '@/utils/type';
 import styles from './Container.less';
 import './Container.less';
 
@@ -17,13 +17,6 @@ export const ICONMAP = {
   other: <IconPng type="other" size={16}></IconPng>,
   word: <IconPng type="word" size={16}></IconPng>,
 };
-
-export interface FieldListItem {
-  id: string;
-  title: string;
-  type: FieldType;
-  showCopyIcon?: boolean;
-}
 
 export const Container: FC = () => {
   const [dragItem, setDragItem] = useState<FieldListItem>();

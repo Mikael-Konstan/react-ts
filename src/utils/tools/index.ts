@@ -26,6 +26,31 @@ export const CommonRegValidate = (key: keyof CommonRegKey, value: string) => {
   return CommonReg[key].test(value);
 };
 
+// 判断是否是function
 export const isFn = (fn: any) => {
   return Object.prototype.toString.call(fn) === '[object Function]';
+};
+
+// 字符串按索引替换删除部分
+export const strReplace = (
+  str: string,
+  start: number,
+  end?: number,
+  replace?: string,
+) => {
+  const len = str.length;
+  const Replace =
+    typeof replace === 'string'
+      ? replace
+      : replace === undefined
+      ? ''
+      : Object.prototype.toString.call(replace);
+  let Start = start;
+  let End = typeof end === 'number' ? end : len;
+  if (End < start) {
+    let temp = Start;
+    Start = End;
+    End = temp;
+  }
+  return str.substring(0, Start) + Replace + str.substring(End, len);
 };
