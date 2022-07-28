@@ -1,7 +1,10 @@
 import { ModelsNameSpaceEnum } from '@/utils/enum';
 
+export declare namespace FnListType {
+  type Name = string;
+}
 export interface FnListState {
-  name: string;
+  name: FnListType.Name;
 }
 
 export const state: FnListState = {
@@ -15,7 +18,7 @@ export default {
     save(state: FnListState, { payload }: { payload: FnListState }) {
       return { ...state, ...payload };
     },
-    setName(state: FnListState, action: { payload: string }) {
+    setName(state: FnListState, action: { payload: FnListType.Name }) {
       return {
         ...state,
         name: action.payload,

@@ -1,17 +1,15 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-import { delCookie, getCookie } from '../tools';
 import { history } from 'umi';
 import { Base64 } from 'js-base64';
-import { CommonRes } from '../type';
 import { message as antdMessage, Modal } from 'antd';
+import { CommonRes } from '@/utils/type';
+import { delCookie, getCookie, downLoadFile } from '@/utils/tools';
 import { _BASEURL_ } from '@/global.config';
 
-// TODO code代号意义枚举，没有写全，知道的补充下
+// TODO code代号意义枚举，需要补充
 enum Code {
-  // 老的接口返回0为成功，可以通过success区分是否为成功
-  successOld = 0,
-  // 新的接口返回200为成功，可以通过success区分是否为成功
-  successNew = 200,
+  // 接口返回200为成功
+  success = 200,
   // token过期
   tokenExpire = 12001,
 }
@@ -20,19 +18,6 @@ interface Options extends AxiosRequestConfig {
   // 是否自动加loading，默认true
   loading?: boolean;
 }
-
-const downLoadFile = (data: any, filename: string) => {
-  const blob = new Blob([data]);
-
-  let downloadElement = document.createElement('a');
-  let href = window.URL.createObjectURL(blob); // 创建下载的链接
-  downloadElement.href = href;
-  downloadElement.download = filename; // 下载后文件名
-  document.body.appendChild(downloadElement);
-  downloadElement.click(); // 点击下载
-  document.body.removeChild(downloadElement); // 下载完成移除元素
-  window.URL.revokeObjectURL(href); // 释放掉blob对象
-};
 
 const TokenExpire = () => {
   delCookie('token');
@@ -58,7 +43,6 @@ export default async <T>(options: Options) => {
   // } catch (error) {
   //   antdMessage.error('无效的token.');
   //   console.log('无效的token');
-    
   //   TokenExpire();
   // }
 
@@ -81,7 +65,6 @@ export default async <T>(options: Options) => {
       if (response.data instanceof Blob) {
         const filename =
           headers['content-disposition']?.split('filename=')[1] || '压缩包.zip';
-        // return
         downLoadFile(response.data, window.decodeURI(filename) || '文件.xlsx');
         return Promise.resolve(response.data);
       }
@@ -118,13 +101,12 @@ export default async <T>(options: Options) => {
 
       if (data?.type) {
         //当是文件流的时候处理
-        let reader = new FileReader();
+        const reader = new FileReader();
         reader.readAsText(data, 'utf-8');
         reader.addEventListener('loadend', function () {
           const result: any = reader.result;
           data = JSON.parse(result);
           judgeCode(data);
-
           return Promise.reject({
             success: false,
             code: code || status,

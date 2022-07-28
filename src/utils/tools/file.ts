@@ -30,7 +30,7 @@ export const fileSizeUnitConversion = (
 };
 
 // 下载文件
-export const downLoadFile = (data: Buffer, filename: string) => {
+export const downLoadFile = (data: Buffer | any, filename: string) => {
   const blob = new Blob([data]);
   const dlLink = document.createElement('a');
   const href = window.URL.createObjectURL(blob); // 创建下载的链接

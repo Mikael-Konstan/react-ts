@@ -2,7 +2,7 @@ import { CSSProperties, FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector, useStore, getDvaApp } from 'umi';
 import { Button } from 'antd';
 import styles from './index.less';
-import { aboutSelector } from '@/models/selectors';
+import { reactReduxSelector } from '@/models/selectors';
 
 const About = () => {
   const dispatch = useDispatch(); // 获取dispatch
@@ -10,30 +10,38 @@ const About = () => {
   const dva = getDvaApp(); // 获取dva实例
   const store = useStore(); // 获取store对象
   const state = store.getState();
-  const aboutState = useSelector(aboutSelector);
+  const reactReduxState = useSelector(reactReduxSelector);
+  const dispatchSetList = (
+    payload: ((list: number[]) => number[]) | number[],
+  ) => {
+    dispatch({
+      type: 'reactRedux/setList',
+      payload,
+    });
+  };
+  const dispatchQuery = () => {
+    dispatch({ type: 'reactRedux/query' });
+  };
   const storeTest = () => {
     // console.log(storeState);
-    // console.log(aboutState);
-    // dispatch({ type: 'about/setList', payload: [4, 5, 6] });
-    dispatch({
-      type: 'about/setList',
-      payload: (list: number[]) => {
-        return [4, 5, 6];
-      },
+    // console.log(reactReduxState);
+    // dispatchSetList([4, 5, 6]);
+    dispatchSetList((list: number[]) => {
+      return [4, 5, 6];
     });
   };
   const effectsTest = () => {
-    dispatch({ type: 'about/query' });
+    dispatchQuery();
   };
 
   return (
     <div>
-      <h1>about</h1>
+      <h1>Redux Hooks</h1>
       <Button onClick={storeTest}>storeTest</Button>
       <Button onClick={effectsTest}>effectsTest</Button>
       <div>
-        <p>{JSON.stringify(aboutState.list)}</p>
-        <p>{JSON.stringify(aboutState.modelNumber)}</p>
+        <p>{JSON.stringify(reactReduxState.list)}</p>
+        <p>{JSON.stringify(reactReduxState.modelNumber)}</p>
       </div>
     </div>
   );

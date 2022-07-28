@@ -1,4 +1,4 @@
-export interface getAboutModelNumberRes {
+export interface getReactReduxModelNumberRes {
   code: number;
   message: string;
   success: boolean;

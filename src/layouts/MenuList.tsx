@@ -34,25 +34,25 @@ const routes = [
     ],
   },
   {
-    name: '列表页',
+    name: 'Store',
     icon: <TabletOutlined />,
     path: '/list',
     routes: [
       {
-        path: '/list/sub-page',
-        name: '一级列表页面',
+        path: '/reactRedux/reduxHooks',
+        name: 'Redux Hooks',
         icon: <CrownOutlined />,
-        routes: [
-          {
-            path: 'sub-sub-page1',
-            name: '二级列表页面',
-            icon: <CrownOutlined />,
-          },
-        ],
+        // routes: [
+        //   {
+        //     path: 'sub-sub-page1',
+        //     name: '二级列表页面',
+        //     icon: <CrownOutlined />,
+        //   },
+        // ],
       },
       {
-        path: '/about',
-        name: '二级列表页面',
+        path: '/reactRedux/reduxConnect',
+        name: 'Redux Connect',
         icon: <CrownOutlined />,
       },
     ],
@@ -67,4 +67,5 @@ export default {
   location: {
     pathname: '/',
   },
+  title: 'React',
 };

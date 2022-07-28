@@ -54,7 +54,10 @@ const initI18next = (lng = 'en') => {
 
 initI18next();
 
-const LocaleProvider: FC<LocaleProviderProps> = ({ children, lng = 'en' }) => {
+export const LocaleProvider: FC<LocaleProviderProps> = ({
+  children,
+  lng = 'en',
+}) => {
   useEffect(() => {
     initI18next(lng);
   }, [lng]);

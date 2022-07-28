@@ -33,7 +33,7 @@ const modelNumber = Mock.mock({
 
 export default {
   // 支持值为 Object 和 Array
-  'GET /about/modelNumber': {
+  'GET /ReactRedux/modelNumber': {
     ...resCommon,
     data: modelNumber.number,
   },

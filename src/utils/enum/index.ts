@@ -6,6 +6,6 @@ export enum FieldTypeEnum {
 }
 
 export enum ModelsNameSpaceEnum {
-  ABOUT = 'about',
+  REACTREDUX = 'reactRedux',
   FNLIST = 'fnList',
 }

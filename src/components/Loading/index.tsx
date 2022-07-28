@@ -8,7 +8,7 @@ interface LoadingProps {
   loading?: boolean;
 }
 
-const Loading: FC<LoadingProps> = ({ loading = true }) => {
+export const Loading: FC<LoadingProps> = ({ loading = true }) => {
   if (!loading) return null;
 
   return createPortal(

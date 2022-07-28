@@ -14,3 +14,5 @@ export const IF = ({ condition, children, noDelete }: IFProps) => {
   }
   return <>{!!condition ? children : null}</>;
 };
+
+export default IF;

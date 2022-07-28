@@ -126,3 +126,5 @@ export class Toast {
     Modal.destroyAll();
   }
 }
+
+export default Toast;

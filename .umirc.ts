@@ -95,4 +95,5 @@ export default defineConfig({
   headScripts: [
     'https://lf1-cdn-tos.bytegoofy.com/obj/iconpark/icons_14506_47.c341ceccfa33318e1cf9961532aca9df.es5.js',
   ],
+  mock: undefined,
 });

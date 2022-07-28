@@ -19,9 +19,9 @@ const DropDndComp = () => {
   };
   return (
     <div>
-      <h1>DropDndComp</h1>
+      <h1>Drop Dnd Component</h1>
       <div>
-        <Button onClick={jumpToStyle}>跳转</Button>
+        <Button onClick={jumpToStyle}>跳转 传参 接参</Button>
       </div>
       <DropDnd></DropDnd>
     </div>
