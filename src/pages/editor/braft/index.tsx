@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import braftEditor from 'braft-editor';
+import { EditorState } from 'braft-editor';
 import { BraftEditor } from '@/components';
 
 import styles from './index.less';
@@ -7,18 +7,17 @@ import styles from './index.less';
 interface BraftProps {}
 
 export const Braft: FC<BraftProps> = (props) => {
-  const [wordText, setWordText] = useState<string>('editorStateInit');
-  useEffect(() => {
-    const rawString = '';
-    const editorState = braftEditor.createEditorState(rawString);
+  const [wordText, setWordText] = useState<string>('');
+
+  const onChange = (rawString: string, editorState: EditorState) => {
     const htmlString = editorState.toHTML();
     setWordText(htmlString);
-  }, []);
+  };
   return (
     <div className={styles.Braft}>
       <h1>Braft</h1>
       <div className={styles.BraftEditorContainer}>
-        <BraftEditor></BraftEditor>
+        <BraftEditor onChange={onChange}></BraftEditor>
       </div>
 
       <div
@@ -29,4 +28,4 @@ export const Braft: FC<BraftProps> = (props) => {
   );
 };
 
-export default Braft
+export default Braft;

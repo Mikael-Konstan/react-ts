@@ -6,28 +6,34 @@ import './index.less';
 import { colors, fontSizes, menus } from './config';
 
 const BraftEditorComp: any = braftEditor;
-const editorStateInit = braftEditor.createEditorState('');
+const rawStringInit = '';
+const editorStateInit = braftEditor.createEditorState(rawStringInit);
 
-interface BraftEditorProps {}
+interface BraftEditorProps {
+  rawString?: string;
+  onChange?: (rawString: string, editorState: EditorState) => void;
+}
 
 export const BraftEditor: FC<BraftEditorProps> = (props) => {
   const [editorState, setEditorState] = useState<EditorState>(editorStateInit);
   const [FontSizes, setFontSizes] = useState<number[]>([]);
   const [Colors, setColors] = useState<string[]>([]);
-  const [rawStringOld, SetRawStringOld] = useState<string>(
-    editorStateInit.toRAW(),
-  );
+  const [rawStringOld, SetRawStringOld] = useState<string>(rawStringInit);
   const editorContainerRef = useRef<HTMLDivElement>(null);
   const timerRef = useRef<NodeJS.Timer | null>(null);
 
   useEffect(() => {
     setFontSizes(fontSizes);
     setColors(colors);
-    const rawString = '';
-    const editorState = braftEditor.createEditorState(rawString);
-    setEditorState(editorState);
-    SetRawStringOld(rawString);
   }, []);
+
+  useEffect(() => {
+    if (!!props.rawString) {
+      const editorState = braftEditor.createEditorState(props.rawString);
+      setEditorState(editorState);
+      SetRawStringOld(props.rawString);
+    }
+  }, [props.rawString]);
 
   useEffect(() => {
     if (timerRef.current !== null) {
@@ -35,6 +41,9 @@ export const BraftEditor: FC<BraftEditorProps> = (props) => {
     }
     timerRef.current = setTimeout(() => {
       timerRef.current = null;
+      const rawString = editorState.toRAW();
+      if (rawString === rawStringOld) return;
+      props.onChange && props.onChange(rawString, editorState);
     }, 600);
     return () => {
       if (timerRef.current !== null) {
