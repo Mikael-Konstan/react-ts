@@ -2,6 +2,7 @@ import {
   CrownOutlined,
   SmileOutlined,
   TabletOutlined,
+  EditOutlined,
 } from '@ant-design/icons';
 
 const routes = [
@@ -9,6 +10,30 @@ const routes = [
     path: '/home',
     name: '欢迎',
     icon: <SmileOutlined />,
+  },
+  {
+    name: 'Store',
+    icon: <TabletOutlined />,
+    path: '/list',
+    routes: [
+      {
+        path: '/reactRedux/reduxHooks',
+        name: 'Redux Hooks',
+        icon: <CrownOutlined />,
+        // routes: [
+        //   {
+        //     path: 'sub-sub-page1',
+        //     name: '二级列表页面',
+        //     icon: <CrownOutlined />,
+        //   },
+        // ],
+      },
+      {
+        path: '/reactRedux/reduxConnect',
+        name: 'Redux Connect',
+        icon: <CrownOutlined />,
+      },
+    ],
   },
   {
     path: '/fnList',
@@ -39,25 +64,14 @@ const routes = [
     ],
   },
   {
-    name: 'Store',
-    icon: <TabletOutlined />,
-    path: '/list',
+    path: '/editor',
+    name: '富文本',
+    icon: <EditOutlined />,
+    access: 'canAdmin',
     routes: [
       {
-        path: '/reactRedux/reduxHooks',
-        name: 'Redux Hooks',
-        icon: <CrownOutlined />,
-        // routes: [
-        //   {
-        //     path: 'sub-sub-page1',
-        //     name: '二级列表页面',
-        //     icon: <CrownOutlined />,
-        //   },
-        // ],
-      },
-      {
-        path: '/reactRedux/reduxConnect',
-        name: 'Redux Connect',
+        path: '/editor/braft',
+        name: 'Braft',
         icon: <CrownOutlined />,
       },
     ],

@@ -1,4 +1,5 @@
 export * from './AddField';
+export * from './BraftEditor';
 export * from './icons';
 export * from './IF';
 export * from './Loading';
