@@ -61,6 +61,11 @@ const routes = [
         name: 'CodeMirror Mark',
         icon: <CrownOutlined />,
       },
+      {
+        path: '/fnList/string',
+        name: '字符串',
+        icon: <CrownOutlined />,
+      },
     ],
   },
   {

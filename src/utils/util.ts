@@ -177,7 +177,7 @@ export default {
   },
 
   /**
-   * 将查询字符串转换为key/value对象
+   * 将get参数 转换为key/value对象
    * @param {String} str
    * @return {Object}
    */
