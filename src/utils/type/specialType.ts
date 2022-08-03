@@ -35,3 +35,26 @@ const obj: Supper = {
   b: '2',
 };
 // type 继承多个 end
+
+// 接口继承类
+class Control {
+  private statePrivate: string = '';
+  public statePublic: string = 'statePublic';
+}
+
+interface SelectableControl extends Control {
+  select(): void;
+}
+
+interface ImplementsMulti {
+  a: string;
+}
+// class类 定义接口
+class Button extends Control implements SelectableControl, ImplementsMulti {
+  select() {}
+  a = '111';
+}
+// const button = new Button();
+// console.log(button.statePublic);
+// console.log(button.select());
+// console.log(button.a);

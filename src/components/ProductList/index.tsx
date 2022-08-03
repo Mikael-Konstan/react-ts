@@ -18,13 +18,13 @@ export const ProductList = ({ onDelete, products }: ProductListProps) => {
       render: (text: any, record: ReactReduxType.ProductsItem) => {
         return (
           <Popconfirm title="Delete?" onConfirm={() => onDelete(record.id)}>
-            <Button>Delete</Button>
+            <Button size="small">Delete</Button>
           </Popconfirm>
         );
       },
     },
   ];
-  return <Table dataSource={products} columns={columns} />;
+  return <Table dataSource={products} columns={columns} size="small" />;
 };
 
 export default ProductList;

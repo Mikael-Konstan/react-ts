@@ -36,6 +36,23 @@ const routes = [
     ],
   },
   {
+    name: 'Mobx Store',
+    icon: <TabletOutlined />,
+    path: '/mobx',
+    routes: [
+      {
+        path: '/mobx/mobxClass',
+        name: 'Mobx Class',
+        icon: <CrownOutlined />,
+      },
+      {
+        path: '/mobx/mobxHooks',
+        name: 'Mobx Hook',
+        icon: <CrownOutlined />,
+      },
+    ],
+  },
+  {
     path: '/fnList',
     name: '功能列表',
     icon: <CrownOutlined />,

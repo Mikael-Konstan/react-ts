@@ -33,6 +33,8 @@
     "i18next": "^21.8.14",
     "js-cookie": "^3.0.1",
     "jspdf": "^2.5.1",
+    "mobx": "^6.6.1",
+    "mobx-react": "^7.5.2",
     "mockjs": "^1.1.0",
     "pdfjs-dist": "^2.14.305",
     "react": "17.x",
