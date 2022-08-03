@@ -1,5 +1,6 @@
 import { makeAutoObservable } from 'mobx';
 import { Store } from './index';
+import { getReactMobxTodoNumApi } from '@/services/mobx';
 
 export declare type PayloadAction<P = void> = P & {};
 
@@ -64,6 +65,28 @@ export class TodoStore implements TodoState {
     });
     console.log(id);
     console.log(this.products);
+  }
+  // 携带请求
+  getNum() {
+    return new Promise((resolve, reject) => {
+      getReactMobxTodoNumApi()
+        .then(
+          (res) => {
+            console.log(res);
+            const { data } = res;
+            this.num = data;
+            resolve(res);
+          },
+          (err) => {
+            console.log(err);
+            reject(err);
+          },
+        )
+        .catch((err) => {
+          console.log(err);
+          reject(err);
+        });
+    });
   }
   increaseNum() {
     this.num += 1;

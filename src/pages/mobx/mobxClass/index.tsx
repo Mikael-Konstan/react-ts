@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import { Button } from 'antd';
 import styles from './index.less';
 import { ProductList } from '@/components/ProductList';
-import { store, TodoStore } from '@/stores';
+import { store, todoStore, TodoStore } from '@/stores';
 import { ClassChildExample } from './ClassChildExample';
 
 interface MobxClassProps {
@@ -29,6 +29,22 @@ const MobxClass = observer((props: MobxClassProps) => {
           }}
         >
           Number Increase
+        </Button>
+        <Button
+          size="small"
+          className="ml10"
+          onClick={() => {
+            props.store.getNum().then(
+              () => {
+                console.log('success');
+              },
+              () => {
+                console.log('fail');
+              },
+            );
+          }}
+        >
+          Get Number
         </Button>
         <p>{props.store.flag + ''}</p>
         <Button
@@ -57,4 +73,4 @@ const MobxClass = observer((props: MobxClassProps) => {
   );
 });
 
-export default () => <MobxClass store={store.todo}></MobxClass>;
+export default () => <MobxClass store={todoStore}></MobxClass>;

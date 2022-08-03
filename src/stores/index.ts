@@ -13,4 +13,8 @@ export class Store {
   }
 }
 
-export const store = new Store();
+const store = new Store();
+const userStore = store.user;
+const todoStore = store.todo;
+
+export { store, userStore, todoStore };

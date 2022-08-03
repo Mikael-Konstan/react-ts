@@ -46,6 +46,11 @@ export default {
     total: 86,
   },
 
+  '/ReactMobx/todoNum': {
+    ...resCommon,
+    data: modelNumber.number,
+  },
+
   // 支持自定义函数，API 参考 express@4
   'POST /users/create': (req: any, res: any) => {
     // 添加跨域请求头

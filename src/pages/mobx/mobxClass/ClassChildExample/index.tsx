@@ -3,9 +3,7 @@ import { observer } from 'mobx-react-lite';
 import { Button } from 'antd';
 import styles from './index.less';
 import { ProductList } from '@/components/ProductList';
-import { store } from '@/stores';
-
-const todoStore = store.todo;
+import { store, todoStore } from '@/stores';
 
 interface ClassChildExampleProps {}
 
