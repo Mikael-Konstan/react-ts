@@ -4,6 +4,8 @@ import type { ProSettings } from '@ant-design/pro-components';
 import { ProLayout } from '@ant-design/pro-components';
 import { Avatar } from 'antd';
 import { history } from 'umi';
+import { Provider } from 'react-redux';
+import store from '@/reduxStore/reducerConfig';
 import defaultProps from './MenuList';
 
 interface LayoutProps {}
@@ -18,32 +20,34 @@ const LayoutProvider: FC<LayoutProps> = ({ children }) => {
         height: '100vh',
       }}
     >
-      <ProLayout
-        {...defaultProps}
-        location={{
-          pathname,
-        }}
-        menuItemRender={(item, dom) => (
-          <a
-            onClick={() => {
-              setPathname(item.path || '/welcome');
-              history.push({
-                pathname: item.path,
-              });
-            }}
-          >
-            {dom}
-          </a>
-        )}
-        rightContentRender={() => (
-          <div>
-            rightContentRender
-            <Avatar shape="square" size="small" icon={<UserOutlined />} />
-          </div>
-        )}
-      >
-        {children}
-      </ProLayout>
+      <Provider store={store}>
+        <ProLayout
+          {...defaultProps}
+          location={{
+            pathname,
+          }}
+          menuItemRender={(item, dom) => (
+            <a
+              onClick={() => {
+                setPathname(item.path || '/welcome');
+                history.push({
+                  pathname: item.path,
+                });
+              }}
+            >
+              {dom}
+            </a>
+          )}
+          rightContentRender={() => (
+            <div>
+              rightContentRender
+              <Avatar shape="square" size="small" icon={<UserOutlined />} />
+            </div>
+          )}
+        >
+          {children}
+        </ProLayout>
+      </Provider>
     </div>
   );
 };

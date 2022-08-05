@@ -10,8 +10,6 @@ export class UserStore {
   }
 
   getTodos(user: string) {
-    return this.store.todo.products.filter(
-      (product) => product.id === user,
-    );
+    return this.store.todo.products.filter((product) => product.id === user);
   }
 }
