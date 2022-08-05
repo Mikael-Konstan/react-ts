@@ -33,6 +33,11 @@ const routes = [
         name: 'Redux Connect',
         icon: <CrownOutlined />,
       },
+      {
+        path: '/reactRedux/reduxToolkit',
+        name: 'Redux Toolkit',
+        icon: <CrownOutlined />,
+      },
     ],
   },
   {

@@ -1,10 +1,10 @@
 import { RootState } from '../reducerConfig';
 import { createSelector } from '@reduxjs/toolkit';
-import { DataAnalysisPlateState } from '../reducers/todoReducer';
+import { ReactReduxState } from '@/models/reactRedux';
 
-export const dataAnalysisStateSelector = createSelector(
-  (state: RootState): DataAnalysisPlateState => {
-    return state.dataAnalysisPlate;
+export const todoStateSelector = createSelector(
+  (state: RootState): ReactReduxState => {
+    return state.todo;
   },
-  (dataAnalysisPlate) => dataAnalysisPlate,
+  (todo) => todo,
 );

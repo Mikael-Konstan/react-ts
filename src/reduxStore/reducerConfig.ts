@@ -1,10 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 
-import dataAnalysisPlateReducer from './reducers/todoReducer';
+import todoReducer from './reducers/todoReducer';
 
 const reducer = combineReducers({
-  dataAnalysisPlate: dataAnalysisPlateReducer,
+  todo: todoReducer,
 });
 
 const store = configureStore({
@@ -17,5 +17,12 @@ const store = configureStore({
 });
 
 export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootState,
+  unknown,
+  Action<string>
+>;
 
 export default store;

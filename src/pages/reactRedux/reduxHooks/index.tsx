@@ -1,7 +1,5 @@
-import { CSSProperties, FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector, useStore, getDvaApp } from 'umi';
 import { Button } from 'antd';
-import styles from './index.less';
 import { reactReduxSelector } from '@/models/selectors';
 
 const About = () => {
