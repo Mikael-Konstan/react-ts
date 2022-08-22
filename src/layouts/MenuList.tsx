@@ -69,6 +69,11 @@ const routes = [
         icon: <CrownOutlined />,
       },
       {
+        path: '/fnList/dragSort',
+        name: '拖拽排序',
+        icon: <CrownOutlined />,
+      },
+      {
         path: '/fnList/throttle',
         name: '节流',
         icon: <CrownOutlined />,

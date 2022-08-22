@@ -1,0 +1,44 @@
+.DragSortContainer {
+  padding: 10px 32px 16px;
+  height: 420px;
+  overflow-y: auto;
+}
+
+.fieldItem {
+  height: 32px;
+  font-size: 14px;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #383b4f;
+  line-height: 32px;
+  margin-bottom: 16px;
+  display: flex;
+  z-index: 9999;
+
+  .fieldName {
+    flex: 1 1 188px;
+    margin-right: 12px;
+    background: #f7f8fa;
+    border-radius: 2px;
+    padding: 0 12px;
+    p {
+      margin-left: 8px;
+    }
+  }
+  .fieldOpts {
+    flex: 1 1 44px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    .fieldMove {
+      font-size: 16px;
+      margin-right: 12px;
+      cursor: pointer;
+    }
+    .fieldDel {
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+  }
+}
