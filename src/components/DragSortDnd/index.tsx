@@ -45,7 +45,7 @@ export const DragSortDndItem = (props: any) => {
   return (
     // ref 这样处理可以使得这个组件既可以被拖动也可以接受拖动
     <div
-      //@ts-ignore
+      // @ts-ignore
       ref={changeRef}
       style={{ opacity: isDragging ? 0.5 : 1 }}
       className="dragBox"

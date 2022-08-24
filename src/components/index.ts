@@ -1,5 +1,6 @@
 export * from './AddField';
 export * from './BraftEditor';
+export * from './DragSortDnd';
 export * from './DragSortListHoc';
 export * from './DragSortModal';
 export * from './icons';

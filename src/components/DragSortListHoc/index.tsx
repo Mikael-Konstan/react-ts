@@ -18,38 +18,31 @@ const DragHandle: any = SortableHandle(() => (
   />
 ));
 
-const DragItem: any = SortableElement(
+const SorListItem: any = SortableElement(
   ({
     index,
     item,
+    idxObj,
     delField,
   }: {
     index: number;
     item: FieldListItem;
+    idxObj: {
+      // 普通类型传递不过来
+      index: number;
+    };
     delField: (index: number) => void;
   }) => (
     <div className={comStyles.fieldItem}>
       <div className={comStyles.fieldName}>{item.fieldName}</div>
       <div className={comStyles.fieldOpts}>
         <DragHandle />
-        <span
+        <DeleteSvg
+          className={comStyles.fieldDel}
           onClick={() => {
-            console.log(index);
-            delField(index);
+            delField(idxObj.index, index);
           }}
-          onDoubleClick={() => {
-            console.log(index);
-            delField(index);
-          }}
-        >
-          <DeleteSvg
-            className={comStyles.fieldDel}
-            onClick={() => {
-              console.log(index);
-              delField(index);
-            }}
-          ></DeleteSvg>
-        </span>
+        ></DeleteSvg>
       </div>
     </div>
   ),
@@ -70,9 +63,10 @@ const DragContainer: any = SortableContainer(
           return (
             <>
               {/* @ts-ignore */}
-              <DragItem
+              <SorListItem
                 key={index}
                 index={index}
+                idxObj={{ index }}
                 item={field}
                 delField={delField}
               />
@@ -98,18 +92,14 @@ export const DragSortList = (props: DragSortListProps) => {
   }) => {
     console.log(oldIndex, newIndex);
   };
-  const onSortStart = (a: any) => {
-    console.log(a);
-    return false;
-  };
 
-  const delField = (index: number) => {
-    console.log(index);
-    setFieldList((fieldList) => {
-      return fieldList.filter((i, idx) => {
-        return idx !== index;
-      });
-    });
+  const delField = (index: number, idx: number) => {
+    console.log(index, idx);
+    // setFieldList((fieldList) => {
+    //   return fieldList.filter((i, idx) => {
+    //     return idx !== index;
+    //   });
+    // });
   };
   return (
     <div className={comStyles.DragSortContainer}>
@@ -124,9 +114,10 @@ export const DragSortList = (props: DragSortListProps) => {
         <div className={comStyles.fieldOpts}>操作</div>
       </div>
       <DragContainer
+        pressDelay={100} // 按下的延迟时间 默认为0  此时会吞食点击事件
+        useDragHandle={true} // 是否开启拖拽手柄 默认是false
         FieldList={fieldList}
         onSortEnd={onSortEnd}
-        // onSortStart={onSortStart}
         delField={delField}
       />
     </div>

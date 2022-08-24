@@ -1,8 +1,12 @@
 import { CSSProperties, FC, useState } from 'react';
 import { Button } from 'antd';
 import styles from './index.less';
-import { DragSortModal, useDragSortModal, DragSortList } from '@/components';
-import { DragSortDnd } from '@/components/DragSortDnd';
+import {
+  DragSortModal,
+  useDragSortModal,
+  DragSortList,
+  DragSortDnd,
+} from '@/components';
 
 const DragSort = () => {
   const dragSort = useDragSortModal();
