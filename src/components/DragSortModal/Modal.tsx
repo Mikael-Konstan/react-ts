@@ -1,11 +1,11 @@
 import { Modal } from 'antd';
 import styles from './Modal.less';
-import { DragSortList } from '@/components';
+import { DragSortListHoc } from '@/components';
 
 export interface ModalProps {
   modalVis: boolean;
-  handleOnOk: () => void;
-  handleOnCancel: () => void;
+  handleOk: () => void;
+  handleCancel: () => void;
 }
 
 export const DragSortModal = (props: ModalProps) => {
@@ -13,15 +13,16 @@ export const DragSortModal = (props: ModalProps) => {
     <Modal
       width={600}
       visible={props.modalVis}
-      title="拖拽排序"
+      footer={null}
+      title="拖拽排序 react-sortable-hoc"
       onOk={() => {
-        props.handleOnOk();
+        props.handleOk();
       }}
       onCancel={() => {
-        props.handleOnCancel();
+        props.handleCancel();
       }}
     >
-      <DragSortList />
+      <DragSortListHoc />
     </Modal>
   );
 };

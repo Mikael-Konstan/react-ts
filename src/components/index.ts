@@ -5,6 +5,7 @@ export * from './DragSortListHoc';
 export * from './DragSortModal';
 export * from './icons';
 export * from './IF';
+export * from './Link';
 export * from './Loading';
 export * from './LocaleProvider';
 export * from './PicturePreview';

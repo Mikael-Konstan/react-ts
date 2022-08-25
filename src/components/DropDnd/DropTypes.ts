@@ -1,3 +1,3 @@
 export const DropTypes = {
-	BOX: 'box',
-}
+  BOX: 'box',
+};

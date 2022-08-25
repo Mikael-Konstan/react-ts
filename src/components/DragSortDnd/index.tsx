@@ -3,8 +3,8 @@ import { HolderOutlined } from '@ant-design/icons';
 import { useEffect, useRef, useState } from 'react';
 import styles from './index.less';
 import comStyles from './../common.less';
-import { fieldListDefault } from './../config';
-import { FieldListItem } from './../type';
+import { fieldListDefault } from '@/components/config';
+import { FieldListItem } from '@/utils/type';
 import { useDrop, useDrag, DndProvider } from 'react-dnd';
 //@ts-ignore
 import { cloneDeep } from 'lodash';
@@ -83,7 +83,7 @@ export const DragSortDnd = (props: any) => {
                   changePosition={changePosition}
                 >
                   <div key={item?.id} className={comStyles.fieldItem}>
-                    <div className={comStyles.fieldName}>{item.fieldName}</div>
+                    <div className={comStyles.fieldName}>{item.title}</div>
                     <div className={comStyles.fieldOpts}>
                       <HolderOutlined className={comStyles.fieldMove} />
                     </div>

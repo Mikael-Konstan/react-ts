@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import { EditorState } from 'braft-editor';
-import { BraftEditor } from '@/components';
+import { BraftEditor, Link } from '@/components';
 
 import styles from './index.less';
 
@@ -15,7 +15,9 @@ export const Braft: FC<BraftProps> = (props) => {
   };
   return (
     <div className={styles.Braft}>
-      <h1>Braft</h1>
+      <h1>
+        <Link href="https://www.yuque.com/braft-editor/be/lzwpnr">Braft</Link>
+      </h1>
       <div className={styles.BraftEditorContainer}>
         <BraftEditor onChange={onChange}></BraftEditor>
       </div>

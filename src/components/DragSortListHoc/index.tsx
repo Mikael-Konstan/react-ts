@@ -1,4 +1,4 @@
-import { DeleteSvg } from '@/components';
+import { DeleteSvg, Link } from '@/components';
 import { HolderOutlined } from '@ant-design/icons';
 import { useEffect, useRef, useState } from 'react';
 import {
@@ -8,8 +8,8 @@ import {
 } from 'react-sortable-hoc';
 import styles from './index.less';
 import comStyles from './../common.less';
-import { fieldListDefault } from './../config';
-import { FieldListItem } from './../type';
+import { fieldListDefault } from '@/components/config';
+import { FieldListItem } from '@/utils/type';
 
 const DragHandle: any = SortableHandle(() => (
   <HolderOutlined
@@ -31,10 +31,10 @@ const SorListItem: any = SortableElement(
       // 普通类型传递不过来
       index: number;
     };
-    delField: (index: number) => void;
+    delField: (index: number, idx: number) => void;
   }) => (
     <div className={comStyles.fieldItem}>
-      <div className={comStyles.fieldName}>{item.fieldName}</div>
+      <div className={comStyles.fieldName}>{item.title}</div>
       <div className={comStyles.fieldOpts}>
         <DragHandle />
         <DeleteSvg
@@ -55,7 +55,7 @@ const DragContainer: any = SortableContainer(
     delField,
   }: {
     FieldList: FieldListItem[];
-    delField: (index: number) => void;
+    delField: (index: number, idx: number) => void;
   }) => {
     return (
       <div>
@@ -64,8 +64,7 @@ const DragContainer: any = SortableContainer(
             <>
               {/* @ts-ignore */}
               <SorListItem
-                key={index}
-                index={index}
+                index={index} // react-sortable-hoc 插件所用
                 idxObj={{ index }}
                 item={field}
                 delField={delField}
@@ -80,7 +79,7 @@ const DragContainer: any = SortableContainer(
 
 export interface DragSortListProps {}
 
-export const DragSortList = (props: DragSortListProps) => {
+export const DragSortListHoc = (props: DragSortListProps) => {
   const [fieldList, setFieldList] = useState<FieldListItem[]>(fieldListDefault);
 
   const onSortEnd = ({
@@ -103,7 +102,12 @@ export const DragSortList = (props: DragSortListProps) => {
   };
   return (
     <div className={comStyles.DragSortContainer}>
-      <p>react-sortable-hoc 拖拽排序</p>
+      <p>
+        <Link href="https://www.5axxw.com/wiki/content/hrpw3t">
+          react-sortable-hoc
+        </Link>
+        拖拽排序
+      </p>
       <div className={comStyles.fieldItem}>
         <div
           className={comStyles.fieldName}
@@ -124,4 +128,4 @@ export const DragSortList = (props: DragSortListProps) => {
   );
 };
 
-export default DragSortList;
+export default DragSortListHoc;

@@ -4,7 +4,7 @@ import styles from './index.less';
 import {
   DragSortModal,
   useDragSortModal,
-  DragSortList,
+  DragSortListHoc,
   DragSortDnd,
 } from '@/components';
 
@@ -23,7 +23,7 @@ const DragSort = () => {
           Show DragSort Modal
         </Button>
         <div className={styles.DragSortListContainer}>
-          <DragSortList />
+          <DragSortListHoc />
         </div>
         <div className={styles.DragSortListContainer}>
           <DragSortDnd />

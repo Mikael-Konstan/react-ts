@@ -14,11 +14,11 @@ export const useDragSortModal = function () {
   const getProps = (OK?: CB, Cancel?: CB): ModalProps => {
     return {
       modalVis,
-      handleOnOk: () => {
+      handleOk: () => {
         OK && OK();
         hide();
       },
-      handleOnCancel: () => {
+      handleCancel: () => {
         Cancel && Cancel();
         hide();
       },

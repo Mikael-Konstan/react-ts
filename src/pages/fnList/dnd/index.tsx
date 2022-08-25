@@ -2,34 +2,10 @@ import { CSSProperties, FC, useState } from 'react';
 import { history } from 'umi';
 import { Button } from 'antd';
 import styles from './index.less';
-import { FieldTypeEnum } from '@/utils/enum';
-import { FieldListItem } from '@/utils/type';
-import DropDnd from '@/components/Drop-Dnd';
+import { Link } from '@/components';
+import DropDnd from '@/components/DropDnd';
 
 const DropDndComp = () => {
-  const fieldList: FieldListItem[] = [
-    {
-      id: 'word',
-      title: '文本',
-      type: FieldTypeEnum.WORD,
-      showCopyIcon: true,
-    },
-    {
-      id: 'date',
-      title: '日期',
-      type: FieldTypeEnum.DATE,
-    },
-    {
-      id: 'number',
-      title: '数字',
-      type: FieldTypeEnum.NUMBER,
-    },
-    {
-      id: 'other',
-      title: '其他',
-      type: FieldTypeEnum.OTHER,
-    },
-  ];
   const jumpToStyle = () => {
     // 传参
     history.push({
@@ -44,7 +20,12 @@ const DropDndComp = () => {
   };
   return (
     <div>
-      <h1>Drop Dnd Component</h1>
+      <h1>
+        <Link href="https://react-dnd.github.io/react-dnd/docs/overview">
+          React Dnd
+        </Link>
+        Component
+      </h1>
       <div>
         <Button onClick={jumpToStyle}>跳转 传参 接参</Button>
       </div>

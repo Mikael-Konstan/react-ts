@@ -1,24 +1,26 @@
-import { FieldListItem } from './type';
+import { FieldTypeEnum } from '@/utils/enum';
+import { FieldListItem } from '@/utils/type';
 
 export const fieldListDefault: FieldListItem[] = [
   {
-    fieldCode: '',
-    fieldName: '图名',
+    id: 'word',
+    title: '文本',
+    type: FieldTypeEnum.WORD,
+    showCopyIcon: true,
   },
   {
-    fieldCode: '',
-    fieldName: '图号',
+    id: 'date',
+    title: '日期',
+    type: FieldTypeEnum.DATE,
   },
   {
-    fieldCode: '',
-    fieldName: '创建人',
+    id: 'number',
+    title: '数字',
+    type: FieldTypeEnum.NUMBER,
   },
   {
-    fieldCode: '',
-    fieldName: '创建时间',
-  },
-  {
-    fieldCode: '',
-    fieldName: '项目',
+    id: 'other',
+    title: '其他',
+    type: FieldTypeEnum.OTHER,
   },
 ];
