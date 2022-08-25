@@ -11,3 +11,7 @@ export * from './LocaleProvider';
 export * from './PicturePreview';
 export * from './ProductList';
 export * from './Toast';
+
+import { DropDnd } from './DropDnd';
+
+export { DropDnd };

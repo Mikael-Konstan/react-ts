@@ -3,7 +3,7 @@ import { history } from 'umi';
 import { Button } from 'antd';
 import styles from './index.less';
 import { Link } from '@/components';
-import DropDnd from '@/components/DropDnd';
+import { DropDnd } from '@/components';
 
 const DropDndComp = () => {
   const jumpToStyle = () => {
