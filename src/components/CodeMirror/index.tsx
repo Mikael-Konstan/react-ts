@@ -47,6 +47,7 @@ export interface CodeMirrorReactProps {
     datas: CodeMirrorDatas,
   ) => void; // 绑定值变化回调
   formulaConfig: string; // 回显 标记配置
+  refreshFlag?: boolean;
   [key: string]: any;
 }
 
@@ -131,7 +132,7 @@ export const CodeMirrorReact: FC<CodeMirrorReactProps> = (props) => {
     });
   }, [mirrorInstance]);
   useEffect(() => {
-    if (!mirrorInstance) return;
+    if (!mirrorInstance || !props.refreshFlag) return;
     const formulaConfig = JSON.parse(props.formulaConfig || '{}');
     const marksPosi: MarkPosiItem[] = formulaConfig.marksPosi || [];
     if (marksPosi.length > 0) {
@@ -141,7 +142,7 @@ export const CodeMirrorReact: FC<CodeMirrorReactProps> = (props) => {
         });
       }, 0);
     }
-  }, [mirrorInstance, props.formulaConfig]);
+  }, [mirrorInstance, props.refreshFlag]);
   useEffect(() => {
     const timer = setTimeout(() => {
       const { valueArr, marksPosi } = getPosiVal(mirrorInstance);

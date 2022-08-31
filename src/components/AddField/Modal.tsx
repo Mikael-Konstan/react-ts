@@ -5,7 +5,7 @@ import styles from './Modal.less';
 import { FieldListItem } from '@/utils/type';
 import { FieldTypeEnum } from '@/utils/enum';
 import { strReplace } from '@/utils/tools';
-import { CodeMirrorReact, MarkPosiItem, CodeMirrorDatas } from './CodeMirror';
+import { CodeMirrorReact, MarkPosiItem, CodeMirrorDatas } from '../CodeMirror';
 
 export interface SumListItem {
   id: string;
@@ -34,6 +34,7 @@ export function AddFieldModal(props: AddFieldModalProps) {
   const [sunName, setSunName] = useState<string>('');
   const [fieldActive, setFieldActive] = useState<number>(0);
   const [active, setActive] = useState<number>(0);
+  const [refreshFlag, setRefreshFlag] = useState<boolean>(false);
   const sumList: SumListItem[] = [
     {
       id: 'DateFormat',
@@ -84,6 +85,7 @@ export function AddFieldModal(props: AddFieldModalProps) {
       setFieldActive(0);
       setActive(0);
     }
+    setRefreshFlag(props.visible);
   }, [props.visible]);
   const getFormula = (valueArr: string[], marksPosi: MarkPosiItem[]) => {
     const resullt = valueArr.map((i) => i);
@@ -180,6 +182,7 @@ export function AddFieldModal(props: AddFieldModalProps) {
               formulaConfig={formulaConfig}
               value={codeMirrorInit}
               onChange={fieldFormulaChange}
+              refreshFlag={refreshFlag}
             ></CodeMirrorReact>
           </div>
         </div>

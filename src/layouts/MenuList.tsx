@@ -108,6 +108,19 @@ const routes = [
       },
     ],
   },
+  {
+    path: '/antdComps',
+    name: 'Antd',
+    icon: <EditOutlined />,
+    access: 'canAdmin',
+    routes: [
+      {
+        path: '/antdComps/tree',
+        name: 'Tree',
+        icon: <CrownOutlined />,
+      },
+    ],
+  },
 ];
 
 export default {

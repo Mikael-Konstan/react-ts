@@ -54,7 +54,7 @@ export const DragSortListHoc = (props: DragSortListProps) => {
   };
 
   return (
-    <div className={comStyles.DragSortContainer}>
+    <div className={comStyles.ModalContainer}>
       <p>
         <Link href="https://www.5axxw.com/wiki/content/hrpw3t">
           react-sortable-hoc

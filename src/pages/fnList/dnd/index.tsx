@@ -2,6 +2,7 @@ import { CSSProperties, FC, useState } from 'react';
 import { history } from 'umi';
 import { Button } from 'antd';
 import styles from './index.less';
+import comStyles from '@/pages/common.less';
 import { Link } from '@/components';
 import { DropDnd } from '@/components';
 
@@ -26,10 +27,12 @@ const DropDndComp = () => {
         </Link>
         Component
       </h1>
-      <div>
+      <div className={comStyles.ModalContainer}>
         <Button onClick={jumpToStyle}>跳转 传参 接参</Button>
       </div>
-      <DropDnd></DropDnd>
+      <div className={comStyles.ModalContainer}>
+        <DropDnd />
+      </div>
     </div>
   );
 };

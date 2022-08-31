@@ -1,4 +1,5 @@
 export * from './AddField';
+export * from './AntdTree';
 export * from './BraftEditor';
 export * from './DragSortDnd';
 export * from './DragSortListHoc';
