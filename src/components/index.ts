@@ -11,6 +11,7 @@ export * from './Loading';
 export * from './LocaleProvider';
 export * from './PicturePreview';
 export * from './ProductList';
+export * from './TextOverFlow';
 export * from './Toast';
 
 import { DropDnd } from './DropDnd';

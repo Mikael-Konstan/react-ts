@@ -1,0 +1,22 @@
+.TextOverflowBase {
+  max-width: 100%;
+  min-width: 100%;
+  word-break: break-all;
+  overflow: hidden;
+  // display: flex 会让 text-overflow: ellipsis 失效
+  transform: translateY(-50%);
+  position: relative;
+  top: 50%;
+}
+
+.TextOverflowSingle {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.TextOverflowMulti {
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
