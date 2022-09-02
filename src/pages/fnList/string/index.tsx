@@ -6,7 +6,7 @@ import { strReplace } from '@/utils/tools';
 import { TextOverFlow } from '@/components';
 
 const innerText = 'aASLHD';
-const innerText2 = 'aASLHDASLJHDLASHDLS';
+const innerText2 = 'aASLHDASLJHDLASHDLSAaASLHDASLJHDLASHD';
 const innerText3 =
   'aASLHDASLJHDLASHDLSAaASLHDASLJHDLASHDLSAaASLHDASLJHDLASHDLSAaASLHDASLJHDLASHDLSAaASLHDASLJHDLASHDLSA';
 
@@ -26,21 +26,37 @@ const String = () => {
             <TextOverFlow title={innerText2} />
           </div>
           <div className={styles.textContainer}>
-            <TextOverFlow title={innerText3} Tooltip={true} placement="left" />
+            <a
+              style={{ display: 'inline-block', width: '100%', height: '100%' }}
+            >
+              <TextOverFlow
+                title={`多行文字显示省略号 ${innerText3}`}
+                Tooltip={true}
+                placement="top"
+              />
+            </a>
           </div>
         </div>
       </div>
 
       <div className={comStyles.ModalContainer}>
-        <div className={styles.textContainerAll} style={{ height: '30px' }}>
+        <div className={styles.textContainerAll} style={{ height: '50px' }}>
           <div className={styles.textContainer}>
-            <TextOverFlow title={innerText} OverFlowAll={true} />
+            <TextOverFlow title="无视长度 显示title" OverFlowAll={true} />
           </div>
           <div className={styles.textContainer}>
-            <TextOverFlow title={innerText2} />
+            <TextOverFlow title={`不使用antd的Tooltip ${innerText2}`} />
           </div>
           <div className={styles.textContainer}>
-            <TextOverFlow title={innerText3} Tooltip={true} />
+            <a
+              style={{ display: 'inline-block', width: '100%', height: '100%' }}
+            >
+              <TextOverFlow
+                title={`使用antd的Tooltip ${innerText3}`}
+                Tooltip={true}
+                placement="left"
+              />
+            </a>
           </div>
         </div>
       </div>

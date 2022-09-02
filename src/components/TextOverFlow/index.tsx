@@ -2,6 +2,7 @@ import { CSSProperties, useState, useEffect, useRef } from 'react';
 import { Tooltip } from 'antd';
 import { TooltipPropsWithTitle } from 'antd/lib/tooltip';
 import styles from './index.less';
+import { visualLen } from '@/components/utils';
 
 interface TextOverFlowProps extends TooltipPropsWithTitle {
   Tooltip?: boolean;
@@ -15,17 +16,22 @@ export const TextOverFlow = (props: TextOverFlowProps) => {
   const divRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     const parentNode: any = divRef.current?.parentNode;
-    const textWidth = visualLen(props.title + '');
     let line = 1;
     let flag = false;
     if (!!parentNode) {
       const style = window.getComputedStyle(parentNode, null);
+      const textWidth = visualLen(props.title + '', {
+        fontSize: style.fontSize,
+        fontFamily: style.fontFamily,
+      });
       const parantW = parseInt(style.width);
       let contentW = parantW;
       let contentH = parseInt(style.height);
       if (style.boxSizing === 'border-box') {
-        contentW -= parseInt(style.paddingLeft) - parseInt(style.paddingRight);
-        contentH -= parseInt(style.paddingTop) - parseInt(style.paddingBottom);
+        contentW =
+          contentW - parseInt(style.paddingLeft) - parseInt(style.paddingRight);
+        contentH =
+          contentH - parseInt(style.paddingTop) - parseInt(style.paddingBottom);
       }
       line = parseInt(contentH / parseInt(style.lineHeight) + '');
       flag = parantW * line < textWidth;
@@ -38,31 +44,6 @@ export const TextOverFlow = (props: TextOverFlowProps) => {
     });
   }, []);
 
-  const visualLen = (innerText: string) => {
-    let span: any;
-    const className = 'visualLenContainer';
-    const spans = document.getElementsByClassName(className);
-    const len = spans.length;
-    if (len > 0) {
-      span = spans[0];
-    } else {
-      span = document.createElement('span');
-      span.className = className;
-      span.style.position = 'fixed';
-      span.style.visibility = 'hidden';
-      span.style.whiteSpace = 'nowrap';
-      span.style.zIndex = '-100';
-    }
-    span.style.fontSize = '16px';
-    span.style.fontFamily = 'inherit';
-    span.innerText = innerText;
-
-    if (len === 0) {
-      document.body.appendChild(span);
-    }
-
-    return span.offsetWidth;
-  };
   if (props.Tooltip) {
     return (
       <Tooltip {...props} title={flag || props.OverFlowAll ? props.title : ''}>
