@@ -50,7 +50,7 @@ export const TextOverFlow = (props: TextOverFlowProps) => {
         <div
           ref={divRef}
           className={`${styles.TextOverflowBase} ${
-            line === 1 ? styles.TextOverflowSingle : styles.TextOverflowMulti
+            line > 1 ? styles.TextOverflowMulti : styles.TextOverflowSingle
           }`}
           style={style}
         >
@@ -64,7 +64,7 @@ export const TextOverFlow = (props: TextOverFlowProps) => {
       {...props}
       ref={divRef}
       className={`${styles.TextOverflowBase} ${
-        line === 1 ? styles.TextOverflowSingle : styles.TextOverflowMulti
+        line > 1 ? styles.TextOverflowMulti : styles.TextOverflowSingle
       }`}
       style={style}
       title={flag || props.OverFlowAll ? props.title + '' : ''}
