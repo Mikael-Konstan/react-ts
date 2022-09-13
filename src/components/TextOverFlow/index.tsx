@@ -24,8 +24,7 @@ export const TextOverFlow = (props: TextOverFlowProps) => {
         fontSize: style.fontSize,
         fontFamily: style.fontFamily,
       });
-      const parantW = parseInt(style.width);
-      let contentW = parantW;
+      let contentW = parseInt(style.width);
       let contentH = parseInt(style.height);
       if (style.boxSizing === 'border-box') {
         contentW =
@@ -33,8 +32,11 @@ export const TextOverFlow = (props: TextOverFlowProps) => {
         contentH =
           contentH - parseInt(style.paddingTop) - parseInt(style.paddingBottom);
       }
-      line = parseInt(contentH / parseInt(style.lineHeight) + '');
-      flag = parantW * line < textWidth;
+      line = parseInt(contentH / (parseInt(style.lineHeight) || 16) + '');
+      if (line < 1 || typeof line !== 'number') {
+        line = 1;
+      }
+      flag = contentW * line < textWidth;
     }
     setFlag(flag);
     setLine(line);
