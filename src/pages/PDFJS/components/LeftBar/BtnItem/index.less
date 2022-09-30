@@ -1,0 +1,117 @@
+.leftOperationBarBtn {
+  width: 100%;
+  height: 45px;
+  background: #f0f0f0;
+  border-bottom: 1px solid #e6e6e6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #818181;
+  position: relative;
+  > svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .cornerMark {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 0px;
+    height: 0px;
+    border: 2px solid #818181;
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
+  }
+
+  .leftOperationBarChildrens {
+    position: absolute;
+    top: -1px;
+    right: -104px;
+    width: 100px;
+    background: #f0f0f0;
+    border: 1px solid #e0e0e0;
+
+    .leftOperationBarChild {
+      height: 45px;
+      font-size: 10px;
+      font-family: PingFangSC-Medium, PingFang SC;
+      font-weight: 500;
+      color: #818181;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .activeBradge {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background: transparent;
+        border: 1px solid transparent;
+      }
+
+      .leftOperationBarChildIcon {
+        margin-left: 8px;
+        margin-right: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+      }
+    }
+
+    .leftOperationBarChildActive {
+      color: #0091ff;
+      background: #fcfcfc;
+
+      .activeBradge {
+        background: #0091ff;
+        border: 1px solid #ffffff;
+      }
+    }
+  }
+
+  .leftOperationBarChildrensColor {
+    position: absolute;
+    top: -1px;
+    right: -134px;
+    height: 40px;
+    width: 130px;
+    background: #f0f0f0;
+    border: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 12px;
+
+    .leftOperationBarChildColor {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+  }
+}
+
+.leftOperationBarBtn:hover {
+  background: #fcfcfc;
+  cursor: pointer;
+}
+
+.leftOperationBarBtnActive {
+  color: #0091ff;
+  background: #fcfcfc;
+
+  .cornerMark {
+    border: 2px solid #0091ff;
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
+  }
+}

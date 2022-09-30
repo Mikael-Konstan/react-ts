@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <linearGradient x1="10.4498948%" y1="-2.30486434%" x2="89.5501052%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#4988FF" offset="0%"></stop>
+            <stop stop-color="#9EC0FF" offset="100%"></stop>
+        </linearGradient>
+        <path d="M14,17.99 L2,17.99 C0.9,17.99 0,17.09 0,15.99 L0,2 C0,0.9 0.9,0 2,0 L9.77,0 C10.56,0 11.31,0.31 11.87,0.86 L15.1,4.03 C15.68,4.59 16,5.36 16,6.17 L16,15.99 C16,17.1 15.1,17.99 14,17.99 Z" id="link-normalForm-2"></path>
+        <path d="M11.81,5.65 C12.1689851,5.65 12.46,5.94101491 12.46,6.3 C12.46,6.62635008 12.2194918,6.89652646 11.9060522,6.94295233 L11.81,6.95 L3.78,6.95 C3.42101491,6.95 3.13,6.65898509 3.13,6.3 C3.13,5.97364992 3.37050819,5.70347354 3.68394776,5.65704767 L3.78,5.65 L11.81,5.65 Z M11.81,9.54 C12.1689851,9.54 12.46,9.83101491 12.46,10.19 C12.46,10.5163501 12.2194918,10.7865265 11.9060522,10.8329523 L11.81,10.84 L3.78,10.84 C3.42101491,10.84 3.13,10.5489851 3.13,10.19 C3.13,9.86364992 3.37050819,9.59347354 3.68394776,9.54704767 L3.78,9.54 L11.81,9.54 Z M11.81,13.42 C12.1689851,13.42 12.46,13.7110149 12.46,14.07 C12.46,14.3963501 12.2194918,14.6665265 11.9060522,14.7129523 L11.81,14.72 L3.78,14.72 C3.42101491,14.72 3.13,14.4289851 3.13,14.07 C3.13,13.7436499 3.37050819,13.4734735 3.68394776,13.4270477 L3.78,13.42 L11.81,13.42 Z" id="link-normalForm-3"></path>
+        <filter x="-75.0%" y="-55.1%" width="250.1%" height="254.4%" filterUnits="objectBoundingBox" id="filter-4">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.305882353   0 0 0 0 0.549019608   0 0 0 0 1  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="24*24" transform="translate(-380.000000, -28.000000)">
+            <g id="流程表单" transform="translate(380.720000, 28.500000)">
+                <rect id="矩形备份-8" x="0" y="0" width="24" height="24"></rect>
+                <g id="编组-17" transform="translate(4.000000, 3.005000)" fill-rule="nonzero">
+                    <g id="路径">
+                        <use fill="#000000" xlink:href="#link-normalForm-2"></use>
+                        <use fill="url(#linearGradient-1)" xlink:href="#link-normalForm-2"></use>
+                    </g>
+                    <g id="形状结合">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#link-normalForm-3"></use>
+                        <use fill="#FFFFFF" xlink:href="#link-normalForm-3"></use>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

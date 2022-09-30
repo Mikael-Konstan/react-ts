@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <linearGradient x1="10.4498948%" y1="-2.30486434%" x2="89.5501052%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#4988FF" offset="0%"></stop>
+            <stop stop-color="#9EC0FF" offset="100%"></stop>
+        </linearGradient>
+        <path d="M14,17.99 L2,17.99 C0.9,17.99 0,17.09 0,15.99 L0,2 C0,0.9 0.9,0 2,0 L9.77,0 C10.56,0 11.31,0.31 11.87,0.86 L15.1,4.03 C15.67,4.59 16,5.37 16,6.17 L16,15.99 C16,17.1 15.11,17.99 14,17.99 Z" id="link-processForm-2"></path>
+        <path d="M4.65,3.84 C5.4363279,3.84 6.11108958,4.31767175 6.39994241,4.99867259 L9.84,5 C11.2889851,5 12.47,6.18101491 12.47,7.63 C12.47,9.02325489 11.3780853,10.1687563 10.0059494,10.2548108 L9.84,10.26 L5.96,10.26 C5.24898509,10.26 4.67,10.8389851 4.67,11.55 C4.67,12.2165765 5.17887361,12.7671111 5.82834105,12.8333241 L5.96,12.84 L9.38457153,12.838686 C9.65041014,12.1101384 10.3494627,11.59 11.17,11.59 C12.219341,11.59 13.07,12.440659 13.07,13.49 C13.07,14.539341 12.219341,15.39 11.17,15.39 C10.349087,15.39 9.64977001,14.8693852 9.38420663,14.1403131 L5.96,14.14 C4.53101491,14.14 3.37,12.9789851 3.37,11.55 C3.37,10.1759759 4.44342355,9.04970525 5.79635713,8.96510162 L5.96,8.96 L9.84,8.96 C10.5710149,8.96 11.17,8.36101491 11.17,7.63 C11.17,6.94198596 10.6394111,6.37092568 9.96753703,6.30612279 L9.84,6.3 L6.46621966,6.29970195 C6.22731095,7.07586541 5.50453582,7.64 4.65,7.64 C3.60065898,7.64 2.75,6.78934102 2.75,5.74 C2.75,4.69065898 3.60065898,3.84 4.65,3.84 Z M11.17,12.89 C10.8386292,12.89 10.57,13.1586292 10.57,13.49 C10.57,13.8213708 10.8386292,14.09 11.17,14.09 C11.5013708,14.09 11.77,13.8213708 11.77,13.49 C11.77,13.1586292 11.5013708,12.89 11.17,12.89 Z M4.65,5.14 C4.31862915,5.14 4.05,5.40862915 4.05,5.74 C4.05,6.07137085 4.31862915,6.34 4.65,6.34 C4.98137085,6.34 5.25,6.07137085 5.25,5.74 C5.25,5.40862915 4.98137085,5.14 4.65,5.14 Z" id="link-processForm-3"></path>
+        <filter x="-67.8%" y="-43.3%" width="235.7%" height="221.2%" filterUnits="objectBoundingBox" id="filter-4">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.305882353   0 0 0 0 0.549019608   0 0 0 0 1  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="24*24" transform="translate(-428.000000, -28.000000)">
+            <g id="流程表单" transform="translate(428.720000, 28.500000)">
+                <rect id="矩形备份-9" x="0" y="0" width="24" height="24"></rect>
+                <g id="编组-18" transform="translate(4.000000, 3.005000)" fill-rule="nonzero">
+                    <g id="路径">
+                        <use fill="#000000" xlink:href="#link-processForm-2"></use>
+                        <use fill="url(#linearGradient-1)" xlink:href="#link-processForm-2"></use>
+                    </g>
+                    <g id="形状结合">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#link-processForm-3"></use>
+                        <use fill="#FFFFFF" xlink:href="#link-processForm-3"></use>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

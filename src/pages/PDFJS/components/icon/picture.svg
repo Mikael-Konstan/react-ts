@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 24 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <linearGradient x1="100%" y1="94.5987654%" x2="0%" y2="5.40123457%" id="linearGradient-1">
+            <stop stop-color="#B0DEFF" offset="0%"></stop>
+            <stop stop-color="#4096F7" offset="100%"></stop>
+        </linearGradient>
+        <path d="M16,17 L2,17 C0.9,17 0,16.1 0,15 L0,2 C0,0.9 0.9,0 2,0 L16,0 C17.1,0 18,0.9 18,2 L18,15 C18,16.1 17.1,17 16,17 Z" id="link-picture-2"></path>
+        <path d="M3,12.85 L5.49,8.8 C5.69,8.56 6.04,8.51 6.3,8.68 L8.67,10.26 C8.9,10.41 9.2,10.39 9.41,10.21 L14.77,5.41 C15.16,5.06 15.78,5.34 15.78,5.86 L15.78,13.25 C15.78,13.58 15.51,13.86 15.17,13.86 L3.47,13.86 C2.96,13.84 2.68,13.24 3,12.85 Z" id="link-picture-3"></path>
+        <filter x="-38.7%" y="-46.5%" width="177.4%" height="216.2%" filterUnits="objectBoundingBox" id="filter-4">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.228155278   0 0 0 0 0.562231898   0 0 0 0 0.927385413  0 0 0 0.74983354 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <circle id="link-picture-5" cx="5.17" cy="4.72" r="1.4"></circle>
+        <filter x="-250.0%" y="-178.6%" width="600.0%" height="600.0%" filterUnits="objectBoundingBox" id="filter-6">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.228155278   0 0 0 0 0.562231898   0 0 0 0 0.927385413  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="24*24" transform="translate(-29.000000, -28.000000)">
+            <g id="图片" transform="translate(29.000000, 28.500000)">
+                <rect id="矩形" x="0" y="0" width="24" height="24"></rect>
+                <g id="编组-2" transform="translate(3.000000, 3.500000)" fill-rule="nonzero">
+                    <g id="路径">
+                        <use fill="#000000" xlink:href="#link-picture-2"></use>
+                        <use fill="url(#linearGradient-1)" xlink:href="#link-picture-2"></use>
+                    </g>
+                    <g id="路径">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#link-picture-3"></use>
+                        <use fill="#FFFFFF" xlink:href="#link-picture-3"></use>
+                    </g>
+                    <g id="椭圆形">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-6)" xlink:href="#link-picture-5"></use>
+                        <use fill="#FFFFFF" xlink:href="#link-picture-5"></use>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
