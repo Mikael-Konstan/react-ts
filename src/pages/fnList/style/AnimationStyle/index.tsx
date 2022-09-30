@@ -17,7 +17,8 @@ export const AnimationStyle = (props: AnimationStyleProps) => {
   感我此言良久立，却坐促弦弦转急。 凄凄不似向前声，满座重闻皆掩泣。
   座中泣下谁最多？江州司马青衫湿。`;
   return (
-    <div className={styles.StyleContainer}>
+    <div className={styles.AnimationStyleContainer}>
+      <h1>自定义动画</h1>
       <div className={styles.DataListContainer}>
         <div className={styles.animationFade}>
           <div className={styles.title}>淡入淡出</div>
