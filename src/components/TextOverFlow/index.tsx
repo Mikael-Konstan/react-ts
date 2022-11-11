@@ -44,7 +44,7 @@ export const TextOverFlow = (props: TextOverFlowProps) => {
       lineClamp: line,
       WebkitLineClamp: line,
     });
-  }, []);
+  }, [props.title]);
 
   if (props.Tooltip) {
     return (
