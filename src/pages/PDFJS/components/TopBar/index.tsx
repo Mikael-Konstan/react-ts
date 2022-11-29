@@ -44,7 +44,7 @@ export const TopBar: FC<TopBarProps> = (props: TopBarProps) => {
     <div className="topOperationBar">
       <span className="topOperationBarRight">
         {/* 下载 */}
-        <Tooltip title="下载正在查看版本">
+        {/* <Tooltip title="下载正在查看版本">
           <Button
             className="topBarBtn topBarDownload"
             onClick={() => {
@@ -58,9 +58,9 @@ export const TopBar: FC<TopBarProps> = (props: TopBarProps) => {
         <Divider
           type="vertical"
           style={{ height: '30px', margin: ' 1px 28px 1px' }}
-        />
+        /> */}
         {/* 标注 */}
-        <span
+        {/* <span
           className={`topBarMark ${
             props.rightListType === 'markList' ? 'topBarMarkActive' : ''
           }`}
@@ -70,7 +70,7 @@ export const TopBar: FC<TopBarProps> = (props: TopBarProps) => {
           }}
         >
           标注
-        </span>
+        </span> */}
       </span>
     </div>
   );

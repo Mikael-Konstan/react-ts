@@ -124,40 +124,40 @@ const CanvasEdit: FC<CanvasEditProps> = (props: CanvasEditProps) => {
         backGround: props.backGroundCanvas,
         paintVersion: true,
         shapesChange: (type: string, value: any) => {
-          let val = JSON.parse(JSON.stringify(value));
-          delete val.config;
-          delete val.comment;
-          if (type === 'update') {
-            if (updateTimer.current !== null) {
-              clearTimeout(updateTimer.current);
-              updateTimer.current = null;
-            }
-            updateTimer.current = setTimeout(() => {
-              updateTimer.current = null;
-              markListRefresh();
-            }, 600);
-          }
+          // let val = JSON.parse(JSON.stringify(value));
+          // delete val.config;
+          // delete val.comment;
+          // if (type === 'update') {
+          //   if (updateTimer.current !== null) {
+          //     clearTimeout(updateTimer.current);
+          //     updateTimer.current = null;
+          //   }
+          //   updateTimer.current = setTimeout(() => {
+          //     updateTimer.current = null;
+          //     markListRefresh();
+          //   }, 600);
+          // }
           if (type === 'add') {
             canvasTool.current?.setDrawingType('');
-            if (!Array.isArray(val)) {
-              editMark({
-                markCode: val.code,
-                type: val.type,
-                config: JSON.stringify(val),
-                comment: value.comment || '',
-                index: -1,
-              });
-            }
-            markListRefresh();
+            // if (!Array.isArray(val)) {
+            //   editMark({
+            //     markCode: val.code,
+            //     type: val.type,
+            //     config: JSON.stringify(val),
+            //     comment: value.comment || '',
+            //     index: -1,
+            //   });
+            // }
+            // markListRefresh();
           }
-          if (type === 'delete') {
-            markListRefresh();
-          }
+          // if (type === 'delete') {
+          //   markListRefresh();
+          // }
         },
         keyUp: (selected, event) => {
           const { key } = event as KeyboardEvent;
           if (key === 'Delete') {
-            !!selected;
+            !!selected && deleteMarks(selected);
           }
         },
         mouseOver: (params: any) => {
