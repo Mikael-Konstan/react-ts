@@ -1,5 +1,17 @@
-import { IconFont } from '@/components';
-import { ColorSvg, RectSvg } from './../../../icon';
+import { DownOutlined } from '@ant-design/icons';
+import {
+  ColorSvg,
+  RectSvg,
+  MoveSvg,
+  SelectSvg,
+  CloudSvg,
+  EllipseSvg,
+  AnchorSvg,
+  ArrowSvg,
+  ArrowDoubleSvg,
+  LineSvg,
+  TextSvg,
+} from './../../../icon';
 import { BtnListItem } from './../index';
 
 export enum Colors {
@@ -36,20 +48,20 @@ export const btnList: BtnListItem[] = [
   {
     id: 'move',
     title: '移动',
-    icon: <IconFont type="icon-yidong1" />,
+    icon: <MoveSvg type="icon-yidong1" />,
     show: true,
     selectChildIdx: 0,
     children: [
       {
         id: 'move',
         title: '移动',
-        icon: <IconFont type="icon-yidong1" />,
+        icon: <MoveSvg type="icon-yidong1" />,
         show: true,
       },
       {
         id: 'select',
         title: '选择',
-        icon: <IconFont type="icon-xuanze" />,
+        icon: <SelectSvg type="icon-xuanze" />,
         show: true,
       },
     ],
@@ -57,26 +69,26 @@ export const btnList: BtnListItem[] = [
   {
     id: 'rect',
     title: '矩形',
-    icon: <IconFont type="icon-juxing" />,
+    icon: <RectSvg type="icon-juxing" />,
     show: true,
     selectChildIdx: 1,
     children: [
       {
         id: 'cloud',
         title: '云线',
-        icon: <IconFont type="icon-yunxian" />,
+        icon: <CloudSvg type="icon-yunxian" />,
         show: true,
       },
       {
         id: 'rect',
         title: '矩形',
-        icon: <IconFont type="icon-juxing" />,
+        icon: <RectSvg type="icon-juxing" />,
         show: true,
       },
       {
         id: 'ellipse',
         title: '椭圆',
-        icon: <IconFont type="icon-tuoyuan" />,
+        icon: <EllipseSvg type="icon-tuoyuan" />,
         show: true,
       },
     ],
@@ -84,7 +96,7 @@ export const btnList: BtnListItem[] = [
   {
     id: 'anchor',
     title: '图钉',
-    icon: <IconFont type="icon-tuding2" />,
+    icon: <AnchorSvg type="icon-tuding2" />,
     show: true,
     selectChildIdx: 0,
     children: [],
@@ -92,26 +104,26 @@ export const btnList: BtnListItem[] = [
   {
     id: 'arrow',
     title: 'Arrow',
-    icon: <IconFont type="icon-jiantou" />,
+    icon: <ArrowSvg type="icon-jiantou" />,
     show: true,
     selectChildIdx: 0,
     children: [
       {
         id: 'arrow',
         title: '箭头',
-        icon: <IconFont type="icon-jiantou" />,
+        icon: <ArrowSvg type="icon-jiantou" />,
         show: true,
       },
       {
         id: 'line',
         title: '直线',
-        icon: <IconFont type="icon-zhixian" />,
+        icon: <LineSvg type="icon-zhixian" />,
         show: true,
       },
       {
         id: 'arrowDouble',
         title: '双箭头',
-        icon: <IconFont type="icon-shuangjiantou" />,
+        icon: <ArrowDoubleSvg type="icon-shuangjiantou" />,
         show: true,
       },
     ],
@@ -119,7 +131,7 @@ export const btnList: BtnListItem[] = [
   {
     id: 'text',
     title: '文本',
-    icon: <IconFont type="icon-Text" />,
+    icon: <TextSvg type="icon-Text" />,
     show: true,
     selectChildIdx: 0,
     children: [],

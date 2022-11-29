@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Select } from 'century';
+import { Select } from 'antd';
 
 const { Option } = Select;
 

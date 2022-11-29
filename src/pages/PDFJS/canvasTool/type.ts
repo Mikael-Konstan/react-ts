@@ -95,6 +95,7 @@ export interface ShapesDataAnchorParams {
   x: number;
   y: number;
   iconSize?: number;
+  show?: boolean;
 }
 
 export type ShapesDataParams =

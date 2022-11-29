@@ -501,6 +501,7 @@ export class CanvasTool {
         this.add({
           type: DrawingTypeEnum.ANCHOR,
           ...this.getPoint(event),
+          show: true,
         });
       }
       if (this.drawingType === DrawingTypeEnum.TEXT && this.canvasTextIpt) {

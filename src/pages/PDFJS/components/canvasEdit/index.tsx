@@ -1,19 +1,15 @@
-import { IF, MessageBusContext } from '@/components';
-import {
-  DeleteSvg,
-  DetailSvg,
-  EditSvg,
-} from '@/pages/drawing/markPicture/components/icon';
+import { IF } from '@/components';
+import { MessageBus, MessageBusContext } from '@/utils/context';
+import { DeleteSvg, DetailSvg, EditSvg } from '@/pages/PDFJS/components/icon';
 import {
   ShowDetailModal,
   useShowDetailModal,
-} from '@/pages/drawing/markPicture/components/showDetail';
-import { FileInfoContext } from '@/pages/drawing/markPicture/context';
-import { deleteMarkApi, getMarksApi, saveMarkApi } from '@/services/drawing';
-import { CanvasTool, getElementClient } from '@/services/drawing/canvasTool';
-import { ShapesDataItem, ShapeStyle } from '@/services/drawing/canvasTool/type';
+} from '@/pages/PDFJS/components/showDetail';
+import { FileInfoContext } from '@/pages/PDFJS/context';
+import { CanvasTool, getElementClient } from '@/pages/PDFJS/canvasTool';
+import { ShapesDataItem, ShapeStyle } from '@/pages/PDFJS/canvasTool/type';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
-import { Modal } from 'century';
+import { Modal } from 'antd';
 import { OptionalContentConfig } from 'pdfjs-dist/types/src/display/optional_content_config';
 import React, { FC, useContext, useEffect, useRef, useState } from 'react';
 import { AddAndEditMark } from './../AddAndEditMark';
@@ -119,26 +115,6 @@ const CanvasEdit: FC<CanvasEditProps> = (props: CanvasEditProps) => {
     };
   }, [props.backGroundCanvas, scale, canvasTool.current]);
 
-  useEffect(() => {
-    const fileVisionMap: any = {};
-    fileInfo.fileVisionList.forEach((item) => {
-      fileVisionMap[item.code] = item;
-    });
-    const shapesData = canvasTool.current?.getShapesData() || [];
-    canvasTool.current?.removeAll();
-    canvasTool.current?.add(
-      shapesData.map((item) => {
-        return {
-          ...item,
-          show: fileVisionMap[item.versionId || '']?.checked,
-          curVersion:
-            item.versionId ===
-            fileInfo.fileVisionList[fileInfo.currentVision]?.code,
-        };
-      }),
-    );
-  }, [fileInfo.fileVisionList]);
-
   // canvasTool 初始化
   const canvasToolInit = () => {
     if (props.backGroundCanvas && !canvasTool.current) {
@@ -158,14 +134,6 @@ const CanvasEdit: FC<CanvasEditProps> = (props: CanvasEditProps) => {
             }
             updateTimer.current = setTimeout(() => {
               updateTimer.current = null;
-              saveMarks({
-                code: fileInfo.fileCode,
-                markCode: val.markCode || val.code,
-                type: val.type,
-                config: JSON.stringify(val),
-                comment: value.comment || '',
-                index: 0,
-              });
               markListRefresh();
             }, 600);
           }
@@ -173,7 +141,6 @@ const CanvasEdit: FC<CanvasEditProps> = (props: CanvasEditProps) => {
             canvasTool.current?.setDrawingType('');
             if (!Array.isArray(val)) {
               editMark({
-                code: fileInfo.fileCode,
                 markCode: val.code,
                 type: val.type,
                 config: JSON.stringify(val),
@@ -190,7 +157,7 @@ const CanvasEdit: FC<CanvasEditProps> = (props: CanvasEditProps) => {
         keyUp: (selected, event) => {
           const { key } = event as KeyboardEvent;
           if (key === 'Delete') {
-            !!selected && deleteMarks(selected);
+            !!selected;
           }
         },
         mouseOver: (params: any) => {
@@ -264,7 +231,6 @@ const CanvasEdit: FC<CanvasEditProps> = (props: CanvasEditProps) => {
           tool.refresh();
           setTimeout(() => {
             canvasTool.current?.refresh();
-            getMarks();
             setTimeout(() => {
               canvasTool.current?.refresh();
             }, 600);
@@ -278,80 +244,6 @@ const CanvasEdit: FC<CanvasEditProps> = (props: CanvasEditProps) => {
       });
     }
   };
-  // 获取现有标记
-  const getMarks = () => {
-    getMarksApi({
-      bluePrintCode: fileInfo.fileCode,
-      name: '',
-      bluePrintType: fileInfo.typeEnum,
-    })
-      .then(
-        (res) => {
-          if (res.code === 200 && res.success) {
-            let markList = res.data || [];
-            const fileVisionMap: any = {};
-            fileInfo.fileVisionList.forEach((item) => {
-              fileVisionMap[item.code] = item;
-            });
-            canvasTool.current?.removeAll();
-            canvasTool.current?.add(
-              markList.map((item) => {
-                let markData = JSON.parse(item.config || '{}');
-                return {
-                  ...item,
-                  ...markData,
-                  versionName: fileVisionMap[item.versionId]?.name || '',
-                  fileCode: item.code,
-                  show: fileVisionMap[item.versionId]?.checked,
-                  curVersion:
-                    item.versionId ===
-                    fileInfo.fileVisionList[fileInfo.currentVision]?.code,
-                };
-              }),
-            );
-          }
-        },
-        (error) => {
-          console.log(error);
-        },
-      )
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-  // 添加、修改标记
-  const saveMarks = (selected: any) => {
-    const addFlag = selected.index === -1;
-    saveMarkApi({
-      code: fileInfo.fileCode,
-      markCode: selected.markCode || selected.code,
-      type: selected.type,
-      config: selected.config,
-      comment: selected.comment,
-      versionId: fileInfo.fileVisionList[fileInfo.currentVision].code,
-      bluePrintType: fileInfo.typeEnum,
-    })
-      .then(
-        (res) => {
-          if (res.code === 200 && res.success) {
-            canvasTool.current?.updateShapeData(selected);
-            getMarks();
-          }
-        },
-        (error) => {
-          console.log(error);
-          if (addFlag) {
-            canvasTool.current?.remove(selected);
-          }
-        },
-      )
-      .catch((error) => {
-        console.log(error);
-        if (addFlag) {
-          canvasTool.current?.remove(selected);
-        }
-      });
-  };
   // 删除标记
   const deleteMarks = (selected: any) => {
     confirm({
@@ -359,24 +251,8 @@ const CanvasEdit: FC<CanvasEditProps> = (props: CanvasEditProps) => {
       icon: <ExclamationCircleOutlined />,
       content: '删除后只能手动重新创建恢复。',
       onOk() {
-        deleteMarkApi({
-          code: fileInfo.fileCode,
-          markCode: selected.code,
-        })
-          .then(
-            (res) => {
-              if (res.code === 200 && res.success) {
-                canvasTool.current?.remove(selected);
-                canvasTool.current?.refresh();
-              }
-            },
-            (error) => {
-              console.log(error);
-            },
-          )
-          .catch((error) => {
-            console.log(error);
-          });
+        canvasTool.current?.remove(selected);
+        canvasTool.current?.refresh();
       },
     });
   };
@@ -432,11 +308,6 @@ const CanvasEdit: FC<CanvasEditProps> = (props: CanvasEditProps) => {
       } else {
         config.lineWidth = value;
       }
-      saveMarks({
-        ...selected,
-        config: JSON.stringify(config),
-        index,
-      });
     }
   };
   // 设置文字大小
@@ -555,7 +426,6 @@ const CanvasEdit: FC<CanvasEditProps> = (props: CanvasEditProps) => {
         markData={markData}
         editMarkVisible={editMarkVisible}
         setEditMarkVisible={showEditMarkToggle}
-        saveMarks={saveMarks}
         deleteMarks={deleteMarks}
         canvasTool={canvasTool.current}
       ></AddAndEditMark>

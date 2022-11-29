@@ -1,5 +1,5 @@
-import { CanvasTool } from '@/services/drawing/canvasTool';
-import { Button, Input, Modal } from 'century';
+import { CanvasTool } from '@/pages/PDFJS/canvasTool';
+import { Button, Input, Modal } from 'antd';
 import { FC, useEffect, useRef, useState } from 'react';
 import './index.less';
 
@@ -9,8 +9,8 @@ export interface AddAndEditMarkProps {
   markData: any;
   editMarkVisible: boolean;
   setEditMarkVisible: (flag: boolean) => void;
-  saveMarks: (selected: any) => void;
-  deleteMarks: (selected: any) => void;
+  saveMarks?: (selected: any) => void;
+  deleteMarks?: (selected: any) => void;
   canvasTool: CanvasTool | null;
 }
 
@@ -58,10 +58,6 @@ export const AddAndEditMark: FC<AddAndEditMarkProps> = (
   }, [props.markData.type]);
   // 确定
   const handleOk = () => {
-    props.saveMarks({
-      ...props.markData,
-      comment,
-    });
     props.setEditMarkVisible(false);
   };
   // 取消
@@ -76,7 +72,6 @@ export const AddAndEditMark: FC<AddAndEditMarkProps> = (
   };
   // 删除
   const handleDelete = () => {
-    props.deleteMarks(props.markData);
     props.setEditMarkVisible(false);
   };
   const textAreaOnChange = (e: any) => {

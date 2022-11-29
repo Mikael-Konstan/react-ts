@@ -121,6 +121,12 @@ const routes = [
       },
     ],
   },
+  {
+    path: '/PDFJS',
+    name: 'Canvas Tools',
+    icon: <EditOutlined />,
+    access: 'canAdmin',
+  },
 ];
 
 export default {

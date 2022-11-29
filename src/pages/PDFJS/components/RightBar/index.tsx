@@ -1,5 +1,5 @@
-import { IconFont } from '@/components';
-import { Slider } from 'century';
+import { ZoomInOutlined, ZoomOutOutlined } from '@ant-design/icons';
+import { Slider } from 'antd';
 import { FC, useEffect, useState } from 'react';
 import './index.less';
 
@@ -20,7 +20,7 @@ export const RightBar: FC<RightBarProps> = (props: RightBarProps) => {
   };
   return (
     <div className="rightOperationBar">
-      <IconFont
+      <ZoomOutOutlined
         type="icon-suoxiao2"
         className="rightBarZoom rightBarZoomOut"
         onClick={() => {
@@ -34,7 +34,7 @@ export const RightBar: FC<RightBarProps> = (props: RightBarProps) => {
         value={scalePercent}
         onChange={onChange}
       />
-      <IconFont
+      <ZoomInOutlined
         type="icon-fangda2"
         className="rightBarZoom rightBarZoomIn"
         onClick={() => {
@@ -45,7 +45,6 @@ export const RightBar: FC<RightBarProps> = (props: RightBarProps) => {
       {/* <Input type="text" onBlur={() => {
         props.setCanvasScale(1);
       }} /> */}
-      <IconFont type="icon-quanping4" className="rightBarFullScreen" />
     </div>
   );
 };
