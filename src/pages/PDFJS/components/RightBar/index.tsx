@@ -1,5 +1,5 @@
 import { IconFont } from '@/components';
-import { Slider } from 'century';
+import { Slider } from 'antd';
 import { FC, useEffect, useState } from 'react';
 import './index.less';
 

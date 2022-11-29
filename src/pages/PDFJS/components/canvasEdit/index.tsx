@@ -1,26 +1,22 @@
-import { IF, MessageBusContext } from '@/components';
-import {
-  DeleteSvg,
-  DetailSvg,
-  EditSvg,
-} from '@/pages/drawing/markPicture/components/icon';
+import { IF } from '@/components';
+import { MessageBusContext } from '@/utils/context/message-bus-context';
+import { DeleteSvg, DetailSvg, EditSvg } from '@/pages/PDFJS/components/icon';
 import {
   ShowDetailModal,
   useShowDetailModal,
-} from '@/pages/drawing/markPicture/components/showDetail';
-import { FileInfoContext } from '@/pages/drawing/markPicture/context';
-import { deleteMarkApi, getMarksApi, saveMarkApi } from '@/services/drawing';
-import { CanvasTool, getElementClient } from '@/services/drawing/canvasTool';
-import { ShapesDataItem, ShapeStyle } from '@/services/drawing/canvasTool/type';
+} from '@/pages/PDFJS/components/showDetail';
+import { FileInfoContext } from '@/pages/PDFJS/context';
+// import { deleteMarkApi, getMarksApi, saveMarkApi } from '@/services/drawing';
+import { CanvasTool, getElementClient } from '@/pages/PDFJS/canvasTool';
+import { ShapesDataItem, ShapeStyle } from '@/pages/PDFJS/canvasTool/type';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
-import { Modal } from 'century';
+import { Modal } from 'antd';
 import { OptionalContentConfig } from 'pdfjs-dist/types/src/display/optional_content_config';
 import React, { FC, useContext, useEffect, useRef, useState } from 'react';
 import { AddAndEditMark } from './../AddAndEditMark';
 import { CanvasDataContext } from './../context';
 import { LeftBar } from './../LeftBar';
 import { RightBar } from './../RightBar';
-import { RightList } from './../RightList';
 import { TopBar } from './../TopBar';
 import './index.less';
 import { ShapeTip } from './ShapeTip';

@@ -1,5 +1,5 @@
-import { CanvasTool } from '@/services/drawing/canvasTool';
-import { Button, Input, Modal } from 'century';
+import { CanvasTool } from '@/pages/PDFJS/canvasTool';
+import { Button, Input, Modal } from 'antd';
 import { FC, useEffect, useRef, useState } from 'react';
 import './index.less';
 

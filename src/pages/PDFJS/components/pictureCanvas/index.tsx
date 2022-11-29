@@ -4,7 +4,7 @@ import CanvasEdit from '../canvasEdit';
 import { getScale } from './../util/index';
 
 interface PictureCanvasProps {
-  imgUrl?: string; // PDF链接
+  imgUrl?: string; // 图片链接
 }
 
 const PictureCanvas: FC<PictureCanvasProps> = (props: PictureCanvasProps) => {

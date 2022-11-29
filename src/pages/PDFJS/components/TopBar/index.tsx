@@ -1,6 +1,6 @@
 import { CusBtn, IconFont, MessageBusContext } from '@/components';
 import { TextOverFlow } from '@/components/TextOverFlow';
-import { FileInfoContext } from '@/pages/drawing/markPicture/context';
+import { FileInfoContext } from '@/pages/PDFJS/context';
 import {
   getFileListApi,
   getFileOrDrawingListApi,
@@ -8,7 +8,9 @@ import {
 } from '@/services/drawing';
 import { DrawingTypeEnum } from '@/utils/enum';
 import { DownOutlined } from '@ant-design/icons';
-import { Divider, Input, Popover, Switch, Tooltip } from 'century';
+import { Divider, Input, Popover, Switch, Tooltip } from 'antd';
+import { ReactChild, ReactFragment, ReactPortal } from 'react';
+import { Key } from 'react';
 import { FC, useContext, useEffect, useRef, useState } from 'react';
 import { useCompToPDF } from './../hooks/index';
 import './index.less';
@@ -78,16 +80,16 @@ export const TopBar: FC<TopBarProps> = (props: TopBarProps) => {
   const getFileList = () => {
     getFileListApi({ name, nodeCode: fileInfo.treeCode || '' })
       .then(
-        (res) => {
+        (res: { code: number; success: any; data: any }) => {
           if (res.code === 200 && res.success) {
             setMenuItems(res.data || []);
           }
         },
-        (error) => {
+        (error: any) => {
           console.log(error);
         },
       )
-      .catch((error) => {
+      .catch((error: any) => {
         console.log(error);
       });
   };
@@ -100,29 +102,31 @@ export const TopBar: FC<TopBarProps> = (props: TopBarProps) => {
       isFollow: fileInfo.isFollow,
     })
       .then(
-        (res) => {
+        (res: { code: any; success: any; data: any }) => {
           const { code, success, data } = res;
           if (code === 200 && success) {
             // console.log(data);
             const menuItems = data.bluePrintSelectList || [];
             setMenuItems(menuItems);
-            const currentFile = menuItems.findIndex((item) => {
-              if (fileInfo.typeEnum === DrawingTypeEnum.FILE) {
-                return item.fileCode === fileInfo.fileCode;
-              } else {
-                return item.name === data.currentName;
-              }
-            });
+            const currentFile = menuItems.findIndex(
+              (item: { fileCode: any; name: any }) => {
+                if (fileInfo.typeEnum === DrawingTypeEnum.FILE) {
+                  return item.fileCode === fileInfo.fileCode;
+                } else {
+                  return item.name === data.currentName;
+                }
+              },
+            );
             messageBus.emit('setFileInfo', {
               currentFile: currentFile === -1 ? 0 : currentFile,
             });
           }
         },
-        (error) => {
+        (error: any) => {
           console.log(error);
         },
       )
-      .catch((error) => {
+      .catch((error: any) => {
         console.log(error);
       });
   };
@@ -135,7 +139,7 @@ export const TopBar: FC<TopBarProps> = (props: TopBarProps) => {
     }
     getFilePreNextApi({ code: fileInfo.fileCode, isPre })
       .then(
-        (res) => {
+        (res: { code: number; success: any; data: { suffix: any } }) => {
           if (res.code === 200 && res.success && res.data) {
             if (setDisabled) {
               if (isPre) {
@@ -152,11 +156,11 @@ export const TopBar: FC<TopBarProps> = (props: TopBarProps) => {
             }
           }
         },
-        (error) => {
+        (error: any) => {
           console.log(error);
         },
       )
-      .catch((error) => {
+      .catch((error: any) => {
         console.log(error);
       });
   };
@@ -178,17 +182,17 @@ export const TopBar: FC<TopBarProps> = (props: TopBarProps) => {
   };
 
   const filterVisibleToggle = () => {
-    setFilterVisible((filterVisible) => !filterVisible);
+    setFilterVisible((filterVisible: any) => !filterVisible);
   };
 
   const onClick = function () {
-    setVisible((visible) => {
+    setVisible((visible: any) => {
       return !visible;
     });
   };
 
   const onClick2 = function () {
-    setVisionListVis((visible) => {
+    setVisionListVis((visible: any) => {
       return !visible;
     });
   };
@@ -219,140 +223,6 @@ export const TopBar: FC<TopBarProps> = (props: TopBarProps) => {
   };
   return (
     <div className="topOperationBar">
-      {/* 上一张 */}
-      <Tooltip title="上一张">
-        <CusBtn
-          className="topBarLeft"
-          icon={<IconFont type="icon-zuo2" />}
-          disabled={fileInfo.currentFile === 0}
-          onClick={() => {
-            messageBus.emit('setFileInfo', {
-              ...menuItems[fileInfo.currentFile - 1],
-              currentFile: fileInfo.currentFile - 1,
-            });
-          }}
-        ></CusBtn>
-      </Tooltip>
-      {/* 下一张 */}
-      <Tooltip title="下一张">
-        <CusBtn
-          className="topBarRight"
-          icon={<IconFont type="icon-you2" />}
-          disabled={fileInfo.currentFile === menuItems.length - 1}
-          onClick={() => {
-            messageBus.emit('setFileInfo', {
-              ...menuItems[fileInfo.currentFile + 1],
-              currentFile: fileInfo.currentFile + 1,
-            });
-          }}
-        ></CusBtn>
-      </Tooltip>
-      {/* 文件/图号切换 */}
-      <div
-        ref={fileListRef}
-        style={{ position: 'relative', marginRight: '12px' }}
-      >
-        <CusBtn onClick={onClick} className="topBarFileList">
-          <span className="fileName">
-            <TextOverFlow
-              Tooltip
-              placement="top"
-              title={(menuItems && menuItems[fileInfo.currentFile]?.name) || ''}
-            />
-          </span>
-          <DownOutlined style={{ margin: '0px 12px 0px 8px' }} />
-        </CusBtn>
-
-        {visible ? (
-          <div className="pt_style_input fileNameSearchContent">
-            <Input
-              placeholder=""
-              allowClear
-              size="large"
-              className="fileNameSearchIpt"
-              defaultValue={name}
-              onChange={(e) => fileNameSearchChange(e)}
-              prefix={'搜索'}
-            />
-            <div className="scrollbarStyle dataList">
-              {menuItems.map((item) => {
-                return (
-                  <div
-                    key={item.sourceCode || item.fileCode || item.code}
-                    onClick={() => onMenuClick(item)}
-                    className={`${
-                      fileInfo.fileCode === item.fileCode ? 'active' : ''
-                    }`}
-                  >
-                    {item.name}
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        ) : (
-          <></>
-        )}
-      </div>
-      {/* 版本切换 */}
-      <div ref={versionListRef} style={{ position: 'relative' }}>
-        <CusBtn onClick={onClick2} className="topBarFileList">
-          <span className="fileName" style={{ width: '172px' }}>
-            <TextOverFlow
-              Tooltip
-              placement="top"
-              title={
-                ((fileInfo.fileVisionList &&
-                  fileInfo.fileVisionList[fileInfo.currentVision]?.name) ||
-                  '') + (fileInfo.currentVision === 0 ? '（在用版本）' : '')
-              }
-            />
-          </span>
-          <DownOutlined style={{ margin: '0px 12px 0px 8px' }} />
-        </CusBtn>
-        {visionListVis && fileInfo.fileVisionList ? (
-          <div className="pt_style_input fileNameSearchContent">
-            <Input
-              placeholder=""
-              allowClear
-              size="large"
-              className="fileNameSearchIpt"
-              value={visionName}
-              onChange={(e) => fileNameSearchChange2(e)}
-              prefix={'搜索'}
-            />
-            <div className="scrollbarStyle dataList">
-              {fileInfo.fileVisionList.map((item, idx) => {
-                if (
-                  visionName !== '' &&
-                  (item.name || '')
-                    .toLocaleLowerCase()
-                    .indexOf(visionName.toLocaleLowerCase()) === -1
-                ) {
-                  return null;
-                }
-                return (
-                  <div
-                    key={item.code}
-                    onClick={() => onMenuClick2(item, idx)}
-                    className={`${
-                      fileInfo.fileVisionList &&
-                      fileInfo.fileVisionList[fileInfo.currentVision]?.code ===
-                        item.code
-                        ? 'active'
-                        : ''
-                    }`}
-                  >
-                    {(item.name || '') + (idx === 0 ? '（在用版本）' : '')}
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        ) : (
-          <></>
-        )}
-      </div>
       <span className="topOperationBarRight">
         {/* 标注版本标识显隐 */}
         <span className="visionMarkShow">
@@ -390,34 +260,6 @@ export const TopBar: FC<TopBarProps> = (props: TopBarProps) => {
             下载
           </CusBtn>
         </Tooltip>
-        <Divider
-          type="vertical"
-          style={{ height: '30px', margin: ' 1px 28px 1px' }}
-        />
-        {/* 标注 */}
-        <span
-          className={`topBarMark ${
-            props.rightListType === 'markList' ? 'topBarMarkActive' : ''
-          }`}
-          onClick={() => {
-            const type = props.rightListType === 'markList' ? '' : 'markList';
-            props.setRightListType(type);
-          }}
-        >
-          标注
-        </span>
-        {/* 引用 */}
-        <span
-          className={`topBarCite ${
-            props.rightListType === 'citeList' ? 'topBarCiteActive' : ''
-          }`}
-          onClick={() => {
-            const type = props.rightListType === 'citeList' ? '' : 'citeList';
-            props.setRightListType(type);
-          }}
-        >
-          引用
-        </span>
       </span>
     </div>
   );

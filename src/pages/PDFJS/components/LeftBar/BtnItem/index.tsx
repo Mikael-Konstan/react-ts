@@ -1,4 +1,4 @@
-import { Tooltip } from 'century';
+import { Tooltip } from 'antd';
 import { FC, useEffect, useState } from 'react';
 import './index.less';
 

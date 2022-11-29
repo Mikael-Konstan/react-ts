@@ -1,10 +1,7 @@
 import { MessageBusContext } from '@/components';
 import { TextOverFlow } from '@/components/TextOverFlow';
-import {
-  FileInfoContext,
-  fileVisionListItem,
-} from '@/pages/drawing/markPicture/context';
-import { Button, Checkbox } from 'century';
+import { FileInfoContext, fileVisionListItem } from '@/pages/PDFJS/context';
+import { Button, Checkbox } from 'antd';
 import { FC, useContext, useEffect, useState } from 'react';
 import styles from './index.less';
 

@@ -1,5 +1,5 @@
 import { FC, useState, useEffect } from 'react';
-import { Checkbox } from 'century';
+import { Checkbox } from 'antd';
 import { OptionalContentConfig } from 'pdfjs-dist/types/src/display/optional_content_config';
 import './index.less';
 
