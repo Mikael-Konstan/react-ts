@@ -5,8 +5,8 @@ import styles from './index.less';
 import { visualLen } from '@/components/utils';
 
 interface TextOverFlowProps extends TooltipPropsWithTitle {
-  Tooltip?: boolean;
-  OverFlowAll?: boolean;
+  Tooltip?: boolean; // 启用antd的Tooltip
+  OverFlowAll?: boolean; // 不计算长度 全部显示title
 }
 
 export const TextOverFlow = (props: TextOverFlowProps) => {

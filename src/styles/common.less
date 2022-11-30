@@ -75,3 +75,46 @@
   padding-bottom: 30px;
 }
 // padding end
+
+/*滚动条的美化*/
+// 支持Google Edge
+::-webkit-scrollbar-track-piece {
+  /*凹槽颜色，边框属性 */
+  background-color: #0d1b20;
+}
+::-webkit-scrollbar {
+  /*滚动条的宽度*/
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-track {
+  /*外层轨道。可以用display:none不显示，也可以添加背景图片，颜色改变显示效果*/
+  /* width: 6px; */
+  background-color: #0d1b20;
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  border-radius: 2em;
+}
+::-webkit-scrollbar-thumb {
+  /*滚动条的设置*/
+  background-color: #606d71;
+  background-clip: padding-box;
+  min-height: 28px;
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  border-radius: 2em;
+}
+::-webkit-scrollbar-thumb:hover {
+  /*滚动条移上去的颜色*/
+  background-color: #606d71;
+}
+
+// overflow: overlay;
+// 滚动条不占位置
+
+* {
+  // 支持火狐
+  scrollbar-color: #606d71 #0d1b20; // 设置滚动条颜色
+  scrollbar-width: thin; // 设置滚动条宽度
+  scrollbar-gutter: auto;
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 21 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <path d="M14.5454321,11.6363623 C14.5454321,14.0461803 12.5937957,16 10.1861596,16 L8.00652351,16 C6.75457478,16.0011298 5.56292466,15.4624223 4.73670569,14.5218166 L0.409797085,9.95999889 C-0.146881702,9.37287381 -0.134951843,8.44927705 0.436706173,7.8767264 C0.709068542,7.60397339 1.07870573,7.45070946 1.4641606,7.45070946 C1.84961548,7.45070946 2.21925267,7.60397339 2.49161504,7.8767264 L4.01088759,9.3974535 L4.01088759,1.45454529 C4.01088759,0.650909019 4.66143298,4.84460902e-16 5.46397834,4.84460902e-16 C5.84955487,0.000192836461 6.21926258,0.153547479 6.49176996,0.426327646 C6.76427735,0.699107813 6.91726202,1.06896877 6.91706909,1.45454529 L6.91706909,4.90909036 C6.91706909,4.20618135 7.48615993,3.63636323 8.18834167,3.63636323 C8.52569703,3.63655606 8.84915858,3.77075491 9.08756845,4.00943756 C9.32597832,4.24812021 9.4598072,4.57173501 9.45961426,4.90909036 L9.45961426,5.63636301 C9.45961426,4.933454 10.0290687,4.36363588 10.7312505,4.36363588 C11.0686058,4.36382871 11.3920674,4.49802756 11.6304773,4.73671021 C11.8688871,4.97539286 12.002716,5.29900766 12.0025231,5.63636301 L12.0025231,6.72727198 C12.0025231,6.02436297 12.5719776,5.45454485 13.2741593,5.45454485 C13.6115146,5.45473768 13.9349762,5.58893653 14.1733861,5.82761918 C14.4117959,6.06630183 14.5456248,6.38991662 14.5454321,6.72727198 L14.5454321,11.6363623 Z" id="moveSvg"></path>
+        <filter x="-24.1%" y="-21.9%" width="148.1%" height="143.8%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="0.5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.505882353   0 0 0 0 0.505882353   0 0 0 0 0.505882353  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="图纸标注" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="标注列表" transform="translate(-92.000000, -201.000000)" fill-rule="nonzero">
+            <g id="路径" transform="translate(95.000000, 204.000000)">
+                <use stroke="currentColor" fill="currentColor" fill-opacity="1" filter="url(#filter-2)" xlink:href="#moveSvg"></use>
+                <use stroke="currentColor" stroke-width="1" fill="#fff" xlink:href="#moveSvg"></use>
+            </g>
+        </g>
+    </g>
+</svg>

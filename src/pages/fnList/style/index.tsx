@@ -4,6 +4,8 @@ import { Tabs } from 'antd';
 import styles from './index.less';
 import { StaticStyle } from './StaticStyle';
 import { AnimationStyle } from './AnimationStyle';
+import { AnimationCss } from './AnimationCss';
+import { WowStyle } from './WowStyle';
 
 const { TabPane } = Tabs;
 
@@ -23,16 +25,20 @@ const Style = (props: StyleProps) => {
     <div className={styles.StyleContainer}>
       <h1>Style</h1>
 
-      <div>
-        <Tabs defaultActiveKey="StaticStyle">
-          <TabPane tab="静态样式" key="StaticStyle">
-            <StaticStyle />
-          </TabPane>
-          <TabPane tab="动画" key="AnimationStyle">
-            <AnimationStyle />
-          </TabPane>
-        </Tabs>
-      </div>
+      <Tabs defaultActiveKey="WowStyle">
+        <TabPane tab="静态样式" key="StaticStyle">
+          <StaticStyle />
+        </TabPane>
+        <TabPane tab="手写动画" key="AnimationStyle">
+          <AnimationStyle />
+        </TabPane>
+        <TabPane tab="animate.css(4.1.1)动画" key="AnimationCss">
+          <AnimationCss />
+        </TabPane>
+        <TabPane tab="Wow动画" key="WowStyle">
+          <WowStyle />
+        </TabPane>
+      </Tabs>
     </div>
   );
 };
