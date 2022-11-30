@@ -22,7 +22,7 @@ export const StaticStyle = (props: StaticStyleProps) => {
   return (
     <div className={styles.StyleContainer}>
       {/* 单纯样式 */}
-      <div className={styles.DataListContainer}>
+      {/* <div className={styles.DataListContainer}>
         <div className={styles.single}>
           <div className={styles.title}>单行超出省略号</div>
           <div className={styles.content}>{content}</div>
@@ -41,7 +41,7 @@ export const StaticStyle = (props: StaticStyleProps) => {
             <div className={styles.foot}>页脚</div>
           </div>
         </div>
-      </div>
+      </div> */}
       {/* 多行文本超出 */}
       <div className={comStyles.ModalContainer}>
         <div className={styles.textContainerAll}>
