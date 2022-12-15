@@ -6,7 +6,11 @@ import {
   useShowDetailModal,
 } from '@/pages/PDFJS/components/showDetail';
 import { CanvasTool, getElementClient } from '@/pages/PDFJS/canvasTool';
-import { ShapesDataItem, ShapeStyle } from '@/pages/PDFJS/canvasTool/type';
+import {
+  ShapesDataItem,
+  ShapesData,
+  ShapeStyle,
+} from '@/pages/PDFJS/canvasTool/type';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { Modal } from 'antd';
 import { OptionalContentConfig } from 'pdfjs-dist/types/src/display/optional_content_config';
@@ -40,8 +44,8 @@ const CanvasEdit: FC<CanvasEditProps> = (props: CanvasEditProps) => {
   const updateTimer = useRef<NodeJS.Timer | null>(null);
   const [showLeftBar, setShowLeftBar] = useState<boolean>(true);
   const [rightListType, setRightListType] = useState<string>('');
-  const [markList, setMarkList] = useState<any[]>([]);
-  const [markData, setMarkData] = useState<any>({});
+  const [markList, setMarkList] = useState<ShapesData>([]);
+  const [markData, setMarkData] = useState<ShapesDataItem | null>(null);
   const [editMarkVisible, setEditMarkVisible] = useState<boolean>(false);
   const [selectedIndexs, setSelectedIndexs] = useState<number>(0);
   const [shapeActiveCode, setShapeActiveCode] = useState<string>('');
@@ -298,8 +302,8 @@ const CanvasEdit: FC<CanvasEditProps> = (props: CanvasEditProps) => {
       return item.code === pointData.pointTarget?.code;
     });
     const selected = shapesData[index];
-    if (selected && (selected as any).config) {
-      let config = JSON.parse((selected as any).config);
+    if (selected.config) {
+      let config = JSON.parse(selected.config);
       if (type === 'color') {
         config.fontColor = value;
         config.fillStyle = value;
@@ -363,6 +367,8 @@ const CanvasEdit: FC<CanvasEditProps> = (props: CanvasEditProps) => {
     const shapesData = canvasTool.current?.getShapesData() || [];
     const item = shapesData[selectedIndexs];
     setCommentShow((item && item.comment) || '');
+    console.log(shapesData);
+
     setMarkList(JSON.parse(JSON.stringify(shapesData)));
   };
   // 标注选中操作

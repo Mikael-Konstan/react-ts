@@ -11,15 +11,9 @@ export interface CommonRes<T = any> {
   data: T; // 业务对象（分页信息不要放在data里）
 }
 
-export type FieldType =
-  | FieldTypeEnum.WORD
-  | FieldTypeEnum.DATE
-  | FieldTypeEnum.NUMBER
-  | FieldTypeEnum.OTHER;
-
 export interface FieldListItem {
   id: string;
   title: string;
-  type: FieldType;
+  type: FieldTypeEnum;
   showCopyIcon?: boolean;
 }

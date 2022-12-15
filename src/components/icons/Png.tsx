@@ -6,7 +6,12 @@ import DatePng from './pngs/date.png';
 import NumberPng from './pngs/number.png';
 import OtherPng from './pngs/other.png';
 
-export type IconPngType = 'word' | 'date' | 'number' | 'other';
+export enum IconPngType {
+  WORD = 'word',
+  DATE = 'date',
+  NUMBER = 'number',
+  OTHER = 'other',
+}
 
 export const PngMap = {
   word: WordPng,

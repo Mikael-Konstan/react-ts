@@ -21,8 +21,7 @@ const LayerList: FC<layerListProps> = (props: layerListProps) => {
   }, []);
 
   const init = () => {
-    const optionalContentConfig = props.optionalContentConfig;
-    const groups = optionalContentConfig._groups || new Map();
+    const groups = props.optionalContentConfig?._groups || new Map();
     const arr: Array<layerGroups> = [];
     groups.forEach((group: any, groupId: string) => {
       arr.push({

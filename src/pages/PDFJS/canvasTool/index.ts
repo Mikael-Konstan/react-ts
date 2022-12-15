@@ -45,17 +45,14 @@ import {
 } from './enum';
 import {
   BooleanToggle,
-  BtnType,
   CanvasInit,
   CanvasTextIpt,
-  CrossType,
   DrawIngStatus,
   EventCB,
   Offset,
   PointData,
   PointsItem,
   Ready,
-  SelectType,
   ShapesChange,
   ShapesData,
   ShapesDataItem,
@@ -146,7 +143,7 @@ export class CanvasTool {
   private drawingType: DrawingTypeEnum | '' = defaultDrawingType;
   private shapeStyle = defaultShapeStyle;
   // 标注选择 方式切换
-  private selectType: SelectType | '' = defaultSelectType;
+  private selectType: SelectTypeEnum | '' = defaultSelectType;
   private clusterData: PointsItem[] = [];
   private clearClusterDataAble = false; // 是否清除clusterData的flag
   private selectedIndexs: number[] = [];
@@ -155,7 +152,7 @@ export class CanvasTool {
 
   private svgs: SvgMaps = getAllSvgs();
   private showBtnFlag = true;
-  public btnSelectType: BtnType | '' = '';
+  public btnSelectType: BtnEnum | '' = '';
 
   constructor(canvasToolProps: CanvasToolProps) {
     if (canvasToolProps.canvas) {
@@ -202,7 +199,7 @@ export class CanvasTool {
     if (type === undefined) {
       return this.selectType;
     } else if (Array.prototype.includes.call(selectTypes, type)) {
-      this.selectType = type as SelectType;
+      this.selectType = type as SelectTypeEnum;
       this.clearSelectedShapes();
     } else {
       this.selectType = '';
@@ -1336,7 +1333,7 @@ export class CanvasTool {
     curVersion?: boolean;
   }) {
     const flag = this.judgePosi && !!mousePosi;
-    let btnSelectType: BtnType | '' = '';
+    let btnSelectType: BtnEnum | '' = '';
     if (this.showBtnFlag && flag) {
       const btnTypes = [BtnEnum.DETAIL, BtnEnum.EDIT, BtnEnum.DELETE];
       btnTypes.forEach((btnType) => {
@@ -1458,7 +1455,10 @@ export class CanvasTool {
     }
   }
   // 判断点是否在闭合图案内
-  isCross({ x, y }: PointsItem, type: CrossType = CrossTypeEnum.BOTH): boolean {
+  isCross(
+    { x, y }: PointsItem,
+    type: CrossTypeEnum = CrossTypeEnum.BOTH,
+  ): boolean {
     if (x === undefined || y === undefined || !this.ctx) return false;
     if (type === CrossTypeEnum.CONTENT) {
       // 判定最后绘制的闭合图案 内部是否包含检测点

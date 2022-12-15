@@ -7,6 +7,7 @@ import {
   DeleteOutlined,
 } from '@ant-design/icons';
 import { TextOverFlow } from '@/components/TextOverFlow';
+import { ShapesData } from '@/pages/PDFJS/canvasTool/type';
 import { notification } from 'antd';
 import { FC, useContext, useEffect, useRef, useState } from 'react';
 import { CanvasDataContext } from './../../context';
@@ -24,7 +25,7 @@ import {
 } from '../../icon';
 
 export interface MarkListItemProps {
-  markList: any[];
+  markList: ShapesData;
   editMark: (markData: any) => void;
   deleteMarks?: (markData: any) => void;
 }

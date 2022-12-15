@@ -243,15 +243,3 @@ export interface ShapeStyle {
   fontFamily?: string;
   lineWidth?: number;
 }
-
-export type SelectType =
-  | SelectTypeEnum.MULTI
-  | SelectTypeEnum.LASSO
-  | SelectTypeEnum.CLUSTERSELECT;
-
-export type CrossType =
-  | CrossTypeEnum.BOTH
-  | CrossTypeEnum.CONTENT
-  | CrossTypeEnum.LINE;
-
-export type BtnType = BtnEnum.DETAIL | BtnEnum.EDIT | BtnEnum.DELETE;

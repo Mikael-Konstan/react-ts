@@ -1,4 +1,6 @@
 import { CanvasTool } from '@/pages/PDFJS/canvasTool';
+import { ShapesDataItem } from '@/pages/PDFJS/canvasTool/type';
+import { DrawingTypeEnum } from '@/pages/PDFJS/canvasTool/enum';
 import { Button, Input, Modal } from 'antd';
 import { FC, useEffect, useRef, useState } from 'react';
 import './index.less';
@@ -6,7 +8,7 @@ import './index.less';
 const { TextArea } = Input;
 
 export interface AddAndEditMarkProps {
-  markData: any;
+  markData: ShapesDataItem | null;
   editMarkVisible: boolean;
   setEditMarkVisible: (flag: boolean) => void;
   saveMarks?: (selected: any) => void;
@@ -23,46 +25,46 @@ export const AddAndEditMark: FC<AddAndEditMarkProps> = (
   useEffect(() => {
     if (props.editMarkVisible) {
       textAreaRef.current?.focus();
-      setComment(props.markData.comment);
+      setComment(props.markData?.comment);
     }
   }, [props.editMarkVisible, props.markData, textAreaRef]);
   useEffect(() => {
-    switch (props.markData.type) {
-      case 'text':
+    switch (props.markData?.type) {
+      case DrawingTypeEnum.TEXT:
         setTitle('文本');
         break;
-      case 'rect':
+      case DrawingTypeEnum.RECT:
         setTitle('矩形');
         break;
-      case 'cloud':
+      case DrawingTypeEnum.CLOUD:
         setTitle('云线');
         break;
-      case 'arc':
+      case DrawingTypeEnum.ARC:
         setTitle('椭圆');
         break;
-      case 'anchor':
+      case DrawingTypeEnum.ANCHOR:
         setTitle('图钉');
         break;
-      case 'line':
+      case DrawingTypeEnum.LINE:
         setTitle('直线');
         break;
-      case 'arrowRadius':
+      case DrawingTypeEnum.ARROWRADIUS:
         setTitle('箭头');
         break;
-      case 'arrowDouble':
+      case DrawingTypeEnum.ARROWDOUBLE:
         setTitle('双箭头');
         break;
       default:
         break;
     }
-  }, [props.markData.type]);
+  }, [props.markData?.type]);
   // 确定
   const handleOk = () => {
     props.setEditMarkVisible(false);
   };
   // 取消
   const handleCancel = () => {
-    if (props.markData.index === -1 && props.canvasTool) {
+    if (props.markData?.index === -1 && props.canvasTool) {
       props.canvasTool.remove({
         ...props.markData,
         code: props.markData.markCode,
@@ -101,7 +103,7 @@ export const AddAndEditMark: FC<AddAndEditMarkProps> = (
         确定
       </Button>,
     ];
-    if (props.markData.index !== -1) {
+    if (props.markData?.index !== -1) {
       arr.unshift(
         <Button
           key="delete"

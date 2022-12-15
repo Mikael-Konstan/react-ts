@@ -3,13 +3,14 @@ import { CloseOutlined } from '@ant-design/icons';
 import { Input } from 'antd';
 import { FC, useEffect, useState } from 'react';
 import { getComment } from '@/pages/PDFJS/components/util';
+import { ShapesData } from '@/pages/PDFJS/canvasTool/type';
 import { SearchSvg } from './../icon';
 import './index.less';
 import { MarkListItem } from './MarkListItem';
 
 export interface RightListProps {
   rightListType: string;
-  markList: any[];
+  markList: ShapesData;
   setRightListType: (type: string) => void;
   editMark: (markData: any) => void;
   deleteMarks: (markData: any) => void;

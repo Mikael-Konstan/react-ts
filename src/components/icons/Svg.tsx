@@ -11,16 +11,17 @@ import { ReactComponent as ZoomOutSvg } from './svgs/zoomOut.svg';
 import { ReactComponent as FullScreenSvg } from './svgs/fullScreen.svg';
 import { ReactComponent as NotFullScreenSvg } from './svgs/notFullScreen.svg';
 
-export type IconSvgType =
-  | 'delete'
-  | 'detail'
-  | 'edit'
-  | 'download'
-  | 'rotate'
-  | 'zoomin'
-  | 'zoomout'
-  | 'fullScreen'
-  | 'notFullScreen';
+export enum IconSvgType {
+  DELETE = 'delete',
+  DETAIL = 'detail',
+  EDIT = 'edit',
+  DOWNLOAD = 'download',
+  ROTATE = 'rotate',
+  ZOOMIN = 'zoomin',
+  ZOOMOUT = 'zoomout',
+  FULLSCREEN = 'fullScreen',
+  NOTFULLSCREEN = 'notFullScreen',
+}
 
 export const SvgMap = {
   delete: DeleteSvg,
