@@ -73,11 +73,11 @@ const routes = [
         name: '拖拽排序',
         icon: <CrownOutlined />,
       },
-      // {
-      //   path: '/fnList/throttle',
-      //   name: '节流',
-      //   icon: <CrownOutlined />,
-      // },
+      {
+        path: '/fnList/throttle',
+        name: '节流',
+        icon: <CrownOutlined />,
+      },
       {
         path: '/fnList/style',
         name: '特殊样式',
@@ -88,11 +88,11 @@ const routes = [
         name: 'CodeMirror Mark',
         icon: <CrownOutlined />,
       },
-      // {
-      //   path: '/fnList/string',
-      //   name: '字符串',
-      //   icon: <CrownOutlined />,
-      // },
+      {
+        path: '/fnList/string',
+        name: '字符串',
+        icon: <CrownOutlined />,
+      },
     ],
   },
   {
@@ -108,19 +108,25 @@ const routes = [
       },
     ],
   },
-  // {
-  //   path: '/antdComps',
-  //   name: 'Antd',
-  //   icon: <EditOutlined />,
-  //   access: 'canAdmin',
-  //   routes: [
-  //     {
-  //       path: '/antdComps/tree',
-  //       name: 'Tree',
-  //       icon: <CrownOutlined />,
-  //     },
-  //   ],
-  // },
+  {
+    path: '/antdComps',
+    name: 'Antd',
+    icon: <EditOutlined />,
+    access: 'canAdmin',
+    routes: [
+      {
+        path: '/antdComps/tree',
+        name: 'Tree',
+        icon: <CrownOutlined />,
+      },
+    ],
+  },
+  {
+    path: '/javascript',
+    name: 'JavaScript',
+    icon: <EditOutlined />,
+    access: 'canAdmin',
+  },
   {
     path: '/PDFJS',
     name: 'Canvas Tools',
