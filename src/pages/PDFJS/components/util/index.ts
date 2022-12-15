@@ -38,7 +38,6 @@ export const getComment = (comment: string, maxLength = 634, len = 300) => {
     /[(\u4e00-\u9fa5)(\u3002|\uff1f|\uff01|\uff0c|\u3001|\uff1b|\uff1a|\u201c|\u201d|\u2018|\u2019|\uff08|\uff09|\u300a|\u300b|\u3010|\u3011|\u007e)]/g;
   let showDetail = false;
   let str = '';
-  let str2 = '';
   let num = 0;
   comment.split('').forEach((item, index) => {
     if (reg.test(item)) {
@@ -55,18 +54,11 @@ export const getComment = (comment: string, maxLength = 634, len = 300) => {
     if (num < maxLength) {
       str += item;
     }
-    if (index < len) {
-      str2 += item;
-    }
   });
   if (str !== comment) {
     showDetail = true;
   }
-  if (str2 !== comment) {
-    str2 += '...';
-  }
   return {
-    commentShow: str2,
     showDetail,
   };
 };

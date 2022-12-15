@@ -21,7 +21,6 @@ export const RightBar: FC<RightBarProps> = (props: RightBarProps) => {
   return (
     <div className="rightOperationBar">
       <ZoomOutOutlined
-        type="icon-suoxiao2"
         className="rightBarZoom rightBarZoomOut"
         onClick={() => {
           props.setCanvasScale(true);
@@ -35,7 +34,6 @@ export const RightBar: FC<RightBarProps> = (props: RightBarProps) => {
         onChange={onChange}
       />
       <ZoomInOutlined
-        type="icon-fangda2"
         className="rightBarZoom rightBarZoomIn"
         onClick={() => {
           props.setCanvasScale(false);

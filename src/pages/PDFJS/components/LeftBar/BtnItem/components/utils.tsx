@@ -59,8 +59,14 @@ export const btnList: BtnListItem[] = [
         show: true,
       },
       {
-        id: 'select',
-        title: '选择',
+        id: 'cluster',
+        title: '框选',
+        icon: <SelectSvg type="icon-xuanze" />,
+        show: true,
+      },
+      {
+        id: 'lasso',
+        title: '套索',
         icon: <SelectSvg type="icon-xuanze" />,
         show: true,
       },

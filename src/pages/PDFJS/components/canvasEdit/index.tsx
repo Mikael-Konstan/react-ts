@@ -1,11 +1,10 @@
 import { IF } from '@/components';
-import { MessageBus, MessageBusContext } from '@/utils/context';
+import { MessageBusContext } from '@/utils/context';
 import { DeleteSvg, DetailSvg, EditSvg } from '@/pages/PDFJS/components/icon';
 import {
   ShowDetailModal,
   useShowDetailModal,
 } from '@/pages/PDFJS/components/showDetail';
-import { FileInfoContext } from '@/pages/PDFJS/context';
 import { CanvasTool, getElementClient } from '@/pages/PDFJS/canvasTool';
 import { ShapesDataItem, ShapeStyle } from '@/pages/PDFJS/canvasTool/type';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
@@ -35,7 +34,6 @@ interface CanvasEditProps {
 }
 
 const CanvasEdit: FC<CanvasEditProps> = (props: CanvasEditProps) => {
-  const fileInfo = useContext(FileInfoContext);
   const canvasContainer = useRef<HTMLCanvasElement>(null);
   const canvasTool = useRef<CanvasTool | null>(null);
   const [scale, setScale] = useState<number>(1);
@@ -148,11 +146,11 @@ const CanvasEdit: FC<CanvasEditProps> = (props: CanvasEditProps) => {
             //     index: -1,
             //   });
             // }
-            // markListRefresh();
+            markListRefresh();
           }
-          // if (type === 'delete') {
-          //   markListRefresh();
-          // }
+          if (type === 'delete') {
+            markListRefresh();
+          }
         },
         keyUp: (selected, event) => {
           const { key } = event as KeyboardEvent;
@@ -407,7 +405,7 @@ const CanvasEdit: FC<CanvasEditProps> = (props: CanvasEditProps) => {
           </IF>
           {/* 右侧缩放 */}
           <RightBar scale={scale} setCanvasScale={setCanvasScale}></RightBar>
-          {/* 标注及引用列表 */}
+          {/* 标注列表 */}
           <RightList
             rightListType={rightListType}
             setRightListType={rightListTypeChange}

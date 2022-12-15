@@ -22,18 +22,6 @@ export type EventCB = (...items: Array<any>) => any;
 
 export type DrawIngStatus = 'readying' | 'pending';
 
-export type DrawingType =
-  | DrawingTypeEnum.PEN
-  | DrawingTypeEnum.TEXT
-  | DrawingTypeEnum.RECT
-  | DrawingTypeEnum.ARC
-  | DrawingTypeEnum.ARROWTRIANGLE
-  | DrawingTypeEnum.LINE
-  | DrawingTypeEnum.ARROWRADIUS
-  | DrawingTypeEnum.ARROWDOUBLE
-  | DrawingTypeEnum.CLOUD
-  | DrawingTypeEnum.ANCHOR;
-
 export interface ShapesDataTextParams {
   type: DrawingTypeEnum.TEXT;
   text: string;
@@ -207,7 +195,7 @@ export type ShapesDataItem =
 export type ShapesData = Array<ShapesDataItem>;
 
 export interface selectTarget {
-  type: DrawingType;
+  type: DrawingTypeEnum;
   text?: string;
   x?: number;
   y?: number;

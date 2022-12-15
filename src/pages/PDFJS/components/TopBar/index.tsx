@@ -1,8 +1,7 @@
-import { TextOverFlow } from '@/components/TextOverFlow';
 import { FileInfoContext } from '@/pages/PDFJS/context';
 import { DownloadOutlined } from '@ant-design/icons';
-import { Divider, Button, Tooltip } from 'antd';
-import { FC, useContext, useEffect, useRef, useState } from 'react';
+import { Divider, Button } from 'antd';
+import { FC, useContext } from 'react';
 import { useCompToPDF } from './../hooks/index';
 import './index.less';
 
@@ -15,27 +14,7 @@ export interface TopBarProps {
 
 export const TopBar: FC<TopBarProps> = (props: TopBarProps) => {
   const fileInfo = useContext(FileInfoContext);
-  const [visible, setVisible] = useState<boolean>(false);
-  const [visionListVis, setVisionListVis] = useState<boolean>(false);
-  const fileListRef = useRef<HTMLDivElement | null>(null);
-  const versionListRef = useRef<HTMLDivElement | null>(null);
   const { exportPDF } = useCompToPDF({});
-  useEffect(() => {
-    const selectToggle = (e: any) => {
-      const fileListFlag = fileListRef.current?.contains(e.target);
-      const versionListFlag = versionListRef.current?.contains(e.target);
-      if (!fileListFlag) {
-        setVisible(false);
-      }
-      if (!versionListFlag) {
-        setVisionListVis(false);
-      }
-    };
-    document.body.addEventListener('click', selectToggle, true);
-    return () => {
-      document.body.removeEventListener('click', selectToggle, true);
-    };
-  }, []);
 
   const downloadPdf = () => {
     exportPDF(document.getElementById('canvasContainer'), fileInfo.name);
@@ -44,23 +23,16 @@ export const TopBar: FC<TopBarProps> = (props: TopBarProps) => {
     <div className="topOperationBar">
       <span className="topOperationBarRight">
         {/* 下载 */}
-        {/* <Tooltip title="下载正在查看版本">
-          <Button
-            className="topBarBtn topBarDownload"
-            onClick={() => {
-              downloadPdf();
-            }}
-          >
-            <DownloadOutlined type="icon-xiazai2" />
-            下载
-          </Button>
-        </Tooltip>
+        <Button className="topBarBtn topBarDownload" onClick={downloadPdf}>
+          <DownloadOutlined />
+          下载
+        </Button>
         <Divider
           type="vertical"
           style={{ height: '30px', margin: ' 1px 28px 1px' }}
-        /> */}
+        />
         {/* 标注 */}
-        {/* <span
+        <span
           className={`topBarMark ${
             props.rightListType === 'markList' ? 'topBarMarkActive' : ''
           }`}
@@ -70,7 +42,7 @@ export const TopBar: FC<TopBarProps> = (props: TopBarProps) => {
           }}
         >
           标注
-        </span> */}
+        </span>
       </span>
     </div>
   );

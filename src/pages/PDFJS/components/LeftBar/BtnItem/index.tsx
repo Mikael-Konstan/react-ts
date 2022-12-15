@@ -83,8 +83,11 @@ export const BtnItem: FC<BtnItemProps> = (props: BtnItemProps) => {
         props.drawingTypeChange('');
         props.drawingSelectTypeChange('');
         break;
-      case 'select':
+      case 'cluster':
         props.drawingSelectTypeChange('multi');
+        break;
+      case 'lasso':
+        props.drawingSelectTypeChange('lasso');
         break;
       case 'cloud':
         props.drawingTypeChange('cloud');

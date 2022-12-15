@@ -50,7 +50,6 @@ import {
   CanvasTextIpt,
   CrossType,
   DrawIngStatus,
-  DrawingType,
   EventCB,
   Offset,
   PointData,
@@ -144,7 +143,7 @@ export class CanvasTool {
 
   // 绘制自定义图案外部参数
   private drawingAble = true;
-  private drawingType: DrawingType | '' = defaultDrawingType;
+  private drawingType: DrawingTypeEnum | '' = defaultDrawingType;
   private shapeStyle = defaultShapeStyle;
   // 标注选择 方式切换
   private selectType: SelectType | '' = defaultSelectType;
@@ -188,7 +187,7 @@ export class CanvasTool {
     if (type === undefined) {
       return this.drawingType;
     } else if (Array.prototype.includes.call(drawingTypes, type)) {
-      this.drawingType = type as DrawingType;
+      this.drawingType = type as DrawingTypeEnum;
       if (type !== DrawingTypeEnum.TEXT) {
         this.hideCanvasTextIpt();
       }
@@ -1446,9 +1445,7 @@ export class CanvasTool {
         });
       });
 
-      // selectedIndexs = Array.from(new Set(selectedIndexs));
-      const selectedIndex = selectedIndexs[0];
-      selectedIndexs = [selectedIndex]; // 目前先做单选
+      selectedIndexs = Array.from(new Set(selectedIndexs));
       this.selectedIndexs = selectedIndexs;
       this.selectType = SelectTypeEnum.CLUSTERSELECT;
       this.clusterData = getClusterData(
@@ -1458,8 +1455,6 @@ export class CanvasTool {
       );
       this.paintCanvas();
       this.clearClusterDataAble = true;
-
-      this.pointData.pointTarget = this.shapesData[selectedIndex];
     }
   }
   // 判断点是否在闭合图案内

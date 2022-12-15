@@ -1,8 +1,8 @@
 import { IF } from '@/components';
-import { FileInfoContext } from '@/pages/PDFJS/context';
-import { DownOutlined } from '@ant-design/icons';
-import { Button, Dropdown, Input, Menu, message } from 'antd';
-import { FC, useContext, useEffect, useState } from 'react';
+import { CloseOutlined } from '@ant-design/icons';
+import { Input } from 'antd';
+import { FC, useEffect, useState } from 'react';
+import { getComment } from '@/pages/PDFJS/components/util';
 import { SearchSvg } from './../icon';
 import './index.less';
 import { MarkListItem } from './MarkListItem';
@@ -16,11 +16,29 @@ export interface RightListProps {
 }
 
 export const RightList: FC<RightListProps> = (props: RightListProps) => {
-  const fileInfo = useContext(FileInfoContext);
   const [keyWord, setKeyWord] = useState<string>('');
   const [markList, setMarkList] = useState<any[]>([]);
   useEffect(() => {
-    setMarkList(props.markList);
+    setMarkList(
+      props.markList
+        .filter((item) => {
+          const KeyWord = String.prototype.trim.call(keyWord);
+          if (KeyWord === '') return true;
+          const creatorName = item.creatorName || '';
+          const comment = item.comment || '';
+          const flag =
+            creatorName.indexOf(KeyWord) !== -1 ||
+            comment.indexOf(KeyWord) !== -1;
+          return flag;
+        })
+        .map((item) => {
+          const { showDetail } = getComment(item.comment || '');
+          return {
+            ...item,
+            showDetail,
+          };
+        }),
+    );
   }, [props.markList, props.markList.length]);
   useEffect(() => {
     setKeyWord('');
@@ -38,8 +56,7 @@ export const RightList: FC<RightListProps> = (props: RightListProps) => {
     >
       <div className="rightListHeader">
         <span>标注</span>
-        <DownOutlined
-          type="icon-guanbi2"
+        <CloseOutlined
           className="closeBtn"
           onClick={() => {
             props.setRightListType('');
@@ -58,9 +75,9 @@ export const RightList: FC<RightListProps> = (props: RightListProps) => {
         <div className="rightListItem">
           <IF condition={props.rightListType === 'markList'}>
             <MarkListItem
-              keyWord={keyWord}
               markList={markList}
               editMark={props.editMark}
+              deleteMarks={props.deleteMarks}
             ></MarkListItem>
           </IF>
         </div>
