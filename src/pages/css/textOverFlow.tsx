@@ -1,16 +1,16 @@
-import styles from './../index.less';
+import styles from './index.less';
 import mixins from '@/styles/mixins.less';
 import comStyles from '@/pages/common.less';
-import { TextOverFlow } from '@/components';
+import { ArticleLayout, TextOverFlow } from '@/components';
 
 const innerText = 'aASLHD';
 const innerText2 = 'aASLHDASLJHDLASHDLSAaASLHDASLJHDLASHD';
 const innerText3 =
   'aASLHDASLJHDLASHDLSAaASLHDASLJHDLASHDLSAaASLHDASLJHDLASHDLSAaASLHDASLJHDLASHDLSAaASLHDASLJHDLASHDLSA';
 
-interface StaticStyleProps {}
+interface TextOverFlow {}
 
-export const StaticStyle = (props: StaticStyleProps) => {
+const textOverFlow = (props: TextOverFlow) => {
   const title = `琵琶行`;
   const name = `白居易 〔唐代〕`;
   const content = `元和十年，予左迁九江郡司马。明年秋，送客湓浦口，闻舟中夜弹琵琶者，听其音，铮铮然有京都声。问其人，本长安倡女，尝学琵琶于穆、曹二善才，年长色衰，委身为贾人妇。遂命酒，使快弹数曲。曲罢悯然，自叙少小时欢乐事，今漂沦憔悴，转徙于江湖间。予出官二年，恬然自安，感斯人言，是夕始觉有迁谪意。因为长句，歌以赠之，凡六百一十六言，命曰《琵琶行》。
@@ -20,7 +20,7 @@ export const StaticStyle = (props: StaticStyleProps) => {
   感我此言良久立，却坐促弦弦转急。 凄凄不似向前声，满座重闻皆掩泣。
   座中泣下谁最多？江州司马青衫湿。`;
   return (
-    <div className={styles.StyleContainer}>
+    <ArticleLayout title="文本超出">
       {/* 单纯样式 */}
       <div className={styles.DataListContainer}>
         <div className={styles.single}>
@@ -30,16 +30,6 @@ export const StaticStyle = (props: StaticStyleProps) => {
         <div className={styles.multi}>
           <div className={styles.title}>多行超出省略号</div>
           <div className={styles.content}>{content}</div>
-        </div>
-        <div className={styles.float}>
-          <div className={styles.title}>高度塌陷</div>
-          <div className={styles.content}>
-            <div className={styles.main}>
-              <p>{title}</p>
-              <p>{name}</p>
-            </div>
-            <div className={styles.foot}>页脚</div>
-          </div>
         </div>
       </div>
       {/* 多行文本超出 */}
@@ -94,6 +84,8 @@ export const StaticStyle = (props: StaticStyleProps) => {
           </div>
         </div>
       </div>
-    </div>
+    </ArticleLayout>
   );
 };
+
+export default textOverFlow;

@@ -128,6 +128,12 @@ const routes = [
     access: 'canAdmin',
   },
   {
+    path: '/note',
+    name: 'Note',
+    icon: <EditOutlined />,
+    access: 'canAdmin',
+  },
+  {
     path: '/PDFJS',
     name: 'Canvas Tools',
     icon: <EditOutlined />,

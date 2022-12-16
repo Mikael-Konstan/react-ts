@@ -38,12 +38,13 @@ const LayoutProvider: FC<LayoutProps> = ({ children }) => {
               {dom}
             </a>
           )}
-          rightContentRender={() => (
-            <div>
-              rightContentRender
-              <Avatar shape="square" size="small" icon={<UserOutlined />} />
-            </div>
-          )}
+          headerHeight={0}
+          // rightContentRender={() => (
+          //   <div>
+          //     rightContentRender
+          //     <Avatar shape="square" size="small" icon={<UserOutlined />} />
+          //   </div>
+          // )}
         >
           {children}
         </ProLayout>

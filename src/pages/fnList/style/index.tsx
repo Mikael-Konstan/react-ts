@@ -29,15 +29,15 @@ const Style = (props: StyleProps) => {
         <TabPane tab="静态样式" key="StaticStyle">
           <StaticStyle />
         </TabPane>
-        {/* <TabPane tab="手写动画" key="AnimationStyle">
+        <TabPane tab="手写动画" key="AnimationStyle">
           <AnimationStyle />
-        </TabPane> */}
+        </TabPane>
         <TabPane tab="animate.css(4.1.1)动画" key="AnimationCss">
           <AnimationCss />
         </TabPane>
-        {/* <TabPane tab="Wow动画" key="WowStyle">
+        <TabPane tab="Wow动画" key="WowStyle">
           <WowStyle />
-        </TabPane> */}
+        </TabPane>
       </Tabs>
     </div>
   );
