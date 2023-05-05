@@ -1,10 +1,31 @@
 import { useState } from 'react';
-import { Tabs, List, Input } from 'antd';
+import { Tabs, List, Input, Tag } from 'antd';
 import styles from './index.less';
-import { IF } from '@/components';
+import { IF, Link } from '@/components';
 import * as _lodash from 'lodash';
 import * as _underscore from 'underscore';
+import { searchFilter } from '@/utils/tools';
 import { NoteList, Article } from './config';
+
+const RenderItem = (item: Article) => {
+  return (
+    <List.Item>
+      <Link href={item.path} target="_self">
+        {item.title}
+      </Link>
+      <div>
+        {Array.isArray(item.tags) &&
+          item.tags.map((tag) => {
+            return (
+              <Tag key={tag} color="volcano">
+                {tag}
+              </Tag>
+            );
+          })}
+      </div>
+    </List.Item>
+  );
+};
 
 const ItemChild = ({ articles }: { articles: Article[] }) => {
   const [keyWord, setKeyWord] = useState<string>('');
@@ -36,30 +57,22 @@ const ItemChild = ({ articles }: { articles: Article[] }) => {
               setPageSize(size);
             },
           }}
-          dataSource={articles.filter((article) => {
-            const KeyWord = String.prototype.trim.call(keyWord);
-            if (KeyWord === '') return true;
-            return String.prototype.includes.call(article.title, KeyWord);
-          })}
-          renderItem={(item) => (
-            <List.Item>
-              <a href={item.path}>{item.title}</a>
-            </List.Item>
-          )}
+          dataSource={searchFilter(articles, keyWord)}
+          renderItem={RenderItem}
         />
       </div>
     </div>
   );
 };
 
-const Note = () => {
+const NoteBook = () => {
   const [keyWord, setKeyWord] = useState<string>('');
   const [pageSize, setPageSize] = useState<number>(10);
 
   return (
     <div className={styles.NoteContainer}>
       <div className={styles.NoteTitle}>
-        <h1>Note</h1>
+        <h1>NoteBook</h1>
         <div>
           <Input
             allowClear
@@ -105,18 +118,13 @@ const Note = () => {
               },
             }}
             header={null}
-            dataSource={NoteList.reduce((pre: Article[], cur) => {
-              return Array.prototype.concat(pre, cur.articles);
-            }, []).filter((article) => {
-              const KeyWord = String.prototype.trim.call(keyWord);
-              if (KeyWord === '') return true;
-              return String.prototype.includes.call(article.title, KeyWord);
-            })}
-            renderItem={(item) => (
-              <List.Item>
-                <a href={item.path}>{item.title}</a>
-              </List.Item>
+            dataSource={searchFilter(
+              NoteList.reduce((pre: Article[], cur) => {
+                return Array.prototype.concat(pre, cur.articles);
+              }, []),
+              keyWord,
             )}
+            renderItem={RenderItem}
           />
         </IF>
       </div>
@@ -124,4 +132,4 @@ const Note = () => {
   );
 };
 
-export default Note;
+export default NoteBook;

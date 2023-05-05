@@ -54,3 +54,29 @@ export const strReplace = (
   }
   return str.substring(0, Start) + Replace + str.substring(End, len);
 };
+
+/**
+ * 搜索过滤数组 --- 支持多个字段搜索
+ * @param arr 被过滤数组
+ * @param keyWord 搜索关键词
+ * @param fields 被搜索字段集合
+ * @returns 过滤后的数组
+ */
+export const searchFilter = (
+  arr: any[],
+  keyWord: string,
+  fields: string | string[] = 'title',
+) => {
+  const KeyWord = String.prototype.trim.call(keyWord);
+  if (KeyWord === '') return arr;
+
+  // console.log();
+
+  const Fields = Array.isArray(fields) ? fields : [fields];
+
+  return arr.filter((item) => {
+    return Fields.some((field) => {
+      return String.prototype.includes.call(item[field], KeyWord);
+    });
+  });
+};

@@ -109,27 +109,14 @@ const routes = [
     ],
   },
   {
-    path: '/antdComps',
-    name: 'Antd',
-    icon: <EditOutlined />,
-    access: 'canAdmin',
-    routes: [
-      {
-        path: '/antdComps/tree',
-        name: 'Tree',
-        icon: <CrownOutlined />,
-      },
-    ],
-  },
-  {
     path: '/javascript',
     name: 'JavaScript',
     icon: <EditOutlined />,
     access: 'canAdmin',
   },
   {
-    path: '/note',
-    name: 'Note',
+    path: '/noteBook',
+    name: 'NoteBook',
     icon: <EditOutlined />,
     access: 'canAdmin',
   },

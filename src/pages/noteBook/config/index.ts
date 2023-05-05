@@ -1,17 +1,9 @@
+import { NoteListItem } from './index.d';
 import { cssArticles } from './css';
 import { antdCompsArticles } from './antd';
 import { pluginsArticles } from './plugins';
-
-export interface Article {
-  title: string;
-  path: string;
-}
-
-export interface NoteListItem {
-  label: string;
-  key: string;
-  articles: Article[];
-}
+import { canvasArticles } from './canvas';
+export * from './index.d';
 
 export const NoteList: NoteListItem[] = [
   {
@@ -28,5 +20,10 @@ export const NoteList: NoteListItem[] = [
     label: 'Plugins',
     key: 'Plugins',
     articles: pluginsArticles,
+  },
+  {
+    label: 'Canvas',
+    key: 'Canvas',
+    articles: canvasArticles,
   },
 ];

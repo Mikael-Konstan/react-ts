@@ -6,7 +6,8 @@ export function copyCanvasToClipboard(
 ) {
   canvas.toBlob(function (blob) {
     if (!blob) return;
-    let data = [new ClipboardItem({ [blob.type]: blob })];
+    const data = [new ClipboardItem({ [blob.type]: blob })];
+    // 复制 写入剪切板
     navigator.clipboard.write(data).then(
       function () {
         onDone();
@@ -26,6 +27,7 @@ export async function readImgFromClipboard(onDone: AnyFn, onError: AnyFn) {
     if (permission.state === 'denied') {
       throw new Error('Not allowed to read clipboard.');
     }
+    // 粘贴 读取剪切板内容
     const clipboardContents = await navigator.clipboard.read();
     console.log(clipboardContents);
     for (const item of clipboardContents) {
@@ -34,7 +36,7 @@ export async function readImgFromClipboard(onDone: AnyFn, onError: AnyFn) {
       } else {
         console.log('image data.');
         const blob = await item.getType('image/png');
-        let img = document.createElement('img');
+        const img = document.createElement('img');
         img.src = URL.createObjectURL(blob);
         document.body.appendChild(img);
       }
@@ -42,22 +44,4 @@ export async function readImgFromClipboard(onDone: AnyFn, onError: AnyFn) {
   } catch (error) {
     console.error(error);
   }
-}
-
-export function getContextFromClipboard() {
-  document.addEventListener('paste', function (event) {
-    var items = event.clipboardData && event.clipboardData.items;
-    console.log(items);
-    var file = null;
-    if (items && items.length) {
-      // 检索剪切板items
-      for (var i = 0; i < items.length; i++) {
-        if (items[i].type.indexOf('image') !== -1) {
-          file = items[i].getAsFile();
-          break;
-        }
-      }
-    }
-    // 此时file就是剪切板中的图片文件
-  });
 }
