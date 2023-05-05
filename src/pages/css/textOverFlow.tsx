@@ -1,7 +1,10 @@
+import { useState } from 'react';
+import { Radio } from 'antd';
+import type { RadioChangeEvent } from 'antd';
 import styles from './index.less';
 import mixins from '@/styles/mixins.less';
 import comStyles from '@/pages/common.less';
-import { ArticleLayout, TextOverFlow } from '@/components';
+import { ArticleLayout, TextOverFlow, CodeHighLighter } from '@/components';
 
 const innerText = 'aASLHD';
 const innerText2 = 'aASLHDASLJHDLASHDLSAaASLHDASLJHDLASHD';
@@ -10,7 +13,31 @@ const innerText3 =
 
 interface TextOverFlow {}
 
+export enum textOverflowEnum {
+  SINGLE = 'single',
+  MULTI = 'textOverflowMulti',
+  NONE = 'none',
+}
+
 const textOverFlow = (props: TextOverFlow) => {
+  const arr = [
+    {
+      value: textOverflowEnum.SINGLE,
+      label: '单行超出省略号',
+    },
+    {
+      value: textOverflowEnum.MULTI,
+      label: '多行超出省略号',
+    },
+    {
+      value: textOverflowEnum.NONE,
+      label: '不显示省略号',
+    },
+  ];
+  const [textOverflow, setTextOverflow] = useState<textOverflowEnum>(
+    textOverflowEnum.SINGLE,
+  );
+  const code = `(num) => num + 1`;
   const title = `琵琶行`;
   const name = `白居易 〔唐代〕`;
   const content = `元和十年，予左迁九江郡司马。明年秋，送客湓浦口，闻舟中夜弹琵琶者，听其音，铮铮然有京都声。问其人，本长安倡女，尝学琵琶于穆、曹二善才，年长色衰，委身为贾人妇。遂命酒，使快弹数曲。曲罢悯然，自叙少小时欢乐事，今漂沦憔悴，转徙于江湖间。予出官二年，恬然自安，感斯人言，是夕始觉有迁谪意。因为长句，歌以赠之，凡六百一十六言，命曰《琵琶行》。
@@ -19,18 +46,42 @@ const textOverFlow = (props: TextOverFlow) => {
   ......... 莫辞更坐弹一曲，为君翻作《琵琶行》。
   感我此言良久立，却坐促弦弦转急。 凄凄不似向前声，满座重闻皆掩泣。
   座中泣下谁最多？江州司马青衫湿。`;
+
+  const onRadioChange = (e: RadioChangeEvent) => {
+    setTextOverflow(e.target.value);
+  };
+  const getClassName = () => {
+    if (textOverflow === textOverflowEnum.SINGLE) {
+      return `${styles.content} ${styles.textOverflow}`;
+    } else if (textOverflow === textOverflowEnum.MULTI) {
+      return `${styles.content} ${styles.textOverflowMulti}`;
+    }
+    return styles.content;
+  };
+
   return (
     <ArticleLayout title="文本超出">
       {/* 单纯样式 */}
       <div className={styles.DataListContainer}>
-        <div className={styles.single}>
-          <div className={styles.title}>单行超出省略号</div>
-          <div className={styles.content}>{content}</div>
+        <div>
+          <div className={styles.title}>
+            <Radio.Group
+              buttonStyle="solid"
+              onChange={onRadioChange}
+              value={textOverflow}
+            >
+              {arr.map((item) => {
+                return (
+                  <Radio.Button value={item.value}>{item.label}</Radio.Button>
+                );
+              })}
+            </Radio.Group>
+          </div>
+          <div className={getClassName()}>{content}</div>
         </div>
-        <div className={styles.multi}>
-          <div className={styles.title}>多行超出省略号</div>
-          <div className={styles.content}>{content}</div>
-        </div>
+      </div>
+      <div className={`${comStyles.ModalContainer} ${styles.textContainerAll}`}>
+        <CodeHighLighter code={code} />
       </div>
       {/* 多行文本超出 */}
       <div className={comStyles.ModalContainer}>

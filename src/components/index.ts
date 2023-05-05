@@ -2,6 +2,7 @@ export * from './AddField';
 export * from './AntdTree';
 export * from './ArticleLayout';
 export * from './BraftEditor';
+export * from './CodeHighLighter';
 export * from './DragSortDnd';
 export * from './DragSortListHoc';
 export * from './DragSortModal';
