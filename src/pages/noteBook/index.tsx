@@ -37,7 +37,7 @@ const ItemChild = ({ articles }: { articles: Article[] }) => {
           allowClear
           placeholder="请输入标题"
           value={keyWord}
-          onChange={(e) => {
+          onChange={(e: any) => {
             setKeyWord(e.target.value);
           }}
           style={{ width: '240px' }}
@@ -50,10 +50,10 @@ const ItemChild = ({ articles }: { articles: Article[] }) => {
           pagination={{
             showSizeChanger: true,
             total: articles.length,
-            showTotal: (total) => `共 ${total} 条`,
+            showTotal: (total: number) => `共 ${total} 条`,
             pageSize,
             pageSizeOptions: [10, 20, 50],
-            onShowSizeChange: (current, size) => {
+            onShowSizeChange: (current: any, size: number) => {
               setPageSize(size);
             },
           }}
@@ -78,7 +78,7 @@ const NoteBook = () => {
             allowClear
             placeholder="请输入关键词"
             value={keyWord}
-            onChange={(e) => {
+            onChange={(e: any) => {
               setKeyWord(e.target.value);
             }}
             style={{ width: '240px' }}
@@ -113,7 +113,7 @@ const NoteBook = () => {
               showSizeChanger: true,
               pageSize,
               pageSizeOptions: [10, 20, 50],
-              onShowSizeChange: (current, size) => {
+              onShowSizeChange: (current: number, size: number) => {
                 setPageSize(size);
               },
             }}

@@ -70,8 +70,6 @@ export const searchFilter = (
   const KeyWord = String.prototype.trim.call(keyWord);
   if (KeyWord === '') return arr;
 
-  // console.log();
-
   const Fields = Array.isArray(fields) ? fields : [fields];
 
   return arr.filter((item) => {
