@@ -49,7 +49,7 @@
     "react-infinite-scroll-component": "^6.1.0",
     "react-redux": "^8.0.2",
     "react-syntax-highlighter": "^15.5.0",
-    "umi": "^3.5.26",
+    "umi": "^3.5.41",
     "underscore": "^1.13.4",
     "uuid": "^8.3.2",
     "wowjs": "^1.1.3"

@@ -50,6 +50,7 @@ export default defineConfig({
     immer: false,
     hmr: true,
   },
+  mfsu: {},
   // layout: {
   //   name: '中台系统',
   //   theme: 'pro',
