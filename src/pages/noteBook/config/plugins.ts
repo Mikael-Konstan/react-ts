@@ -1,9 +1,10 @@
-import { TagEnum, Article } from './index.d';
+import { Article, TagEnum } from './index.d';
+import { tags } from './tags';
 
 export const pluginsArticles: Article[] = [
   {
     title: 'Braft',
     path: '/editor/braft',
-    tags: [TagEnum.EDITOR],
+    tags: [tags[TagEnum.EDITOR]],
   },
 ];

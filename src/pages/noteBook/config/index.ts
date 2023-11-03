@@ -1,4 +1,5 @@
 import { NoteListItem } from './index.d';
+export * from './tags';
 import { cssArticles } from './css';
 import { antdCompsArticles } from './antd';
 import { pluginsArticles } from './plugins';

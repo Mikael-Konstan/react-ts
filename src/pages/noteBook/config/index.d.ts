@@ -1,13 +1,25 @@
 export enum TagEnum {
-  EDITOR = '富文本',
-  DRAG = '拖拽',
-  DRAG_SORT = '拖拽排序',
+  STYLE = 'style',
+  TREE = 'tree',
+  EDITOR = 'editor',
+  DRAG = 'trag',
+  DRAG_SORT = 'trag_sort',
+  VISUALIZATION = 'Visualization',
+}
+
+export interface TagItem {
+  label: string;
+  color: string;
+}
+
+export interface Tags {
+  [key: string]: TagItem;
 }
 
 export interface Article {
   title: string;
   path: string;
-  tags?: TagEnum[];
+  tags?: TagItem[];
 }
 
 export interface NoteListItem {

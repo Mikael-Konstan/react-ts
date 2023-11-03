@@ -9,9 +9,7 @@ import { ArticleLayout, AntdTree } from '@/components';
 const MyTree = () => {
   return (
     <ArticleLayout title="树组件">
-      <div className={comStyles.ModalContainer}>
-        <AntdTree />
-      </div>
+      <AntdTree />
     </ArticleLayout>
   );
 };

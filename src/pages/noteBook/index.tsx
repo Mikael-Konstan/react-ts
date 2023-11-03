@@ -5,7 +5,7 @@ import { IF, Link } from '@/components';
 import * as _lodash from 'lodash';
 import * as _underscore from 'underscore';
 import { searchFilter } from '@/utils/tools';
-import { NoteList, Article } from './config';
+import { NoteList, Article, tags } from './config';
 
 const RenderItem = (item: Article) => {
   return (
@@ -17,8 +17,8 @@ const RenderItem = (item: Article) => {
         {Array.isArray(item.tags) &&
           item.tags.map((tag) => {
             return (
-              <Tag key={tag} color="volcano">
-                {tag}
+              <Tag key={tag.label} color={tag.color}>
+                {tag.label}
               </Tag>
             );
           })}

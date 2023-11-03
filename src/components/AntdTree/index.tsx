@@ -1,6 +1,7 @@
 import { FC, useEffect, useRef, useState } from 'react';
 import { Tree, Switch } from 'antd';
 import { treeData } from './../testData';
+import comStyles from '@/pages/common.less';
 import './index.less';
 
 interface AntdTreeProps {}
@@ -29,7 +30,7 @@ export const AntdTree: FC<AntdTreeProps> = (props) => {
     setBlockNode(checked);
   };
   return (
-    <div>
+    <div className={comStyles.ModalContainer}>
       <div style={{ marginBottom: 16 }}>
         <p>
           showLine: <Switch checked={!!showLine} onChange={onSetShowLine} />
