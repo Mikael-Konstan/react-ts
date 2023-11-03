@@ -47,4 +47,14 @@ export const pluginsArticles: Article[] = [
     path: '/mobx/mobxHooks',
     tags: [tags[TagEnum.MOBX]],
   },
+  {
+    title: 'lodash - javascript',
+    path: '/javascript/lodash',
+    tags: [tags[TagEnum.UTILS]],
+  },
+  {
+    title: 'underscore - javascript',
+    path: '/javascript/underscore',
+    tags: [tags[TagEnum.UTILS]],
+  },
 ];

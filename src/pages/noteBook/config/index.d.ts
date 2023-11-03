@@ -1,5 +1,6 @@
 export enum TagEnum {
   STYLE = 'style',
+  UTILS = 'utils',
   ANIMATION = 'animation',
   TREE = 'tree',
   EDITOR = 'editor',

@@ -9,6 +9,10 @@ export const tags: Tags = {
     label: 'CSS Animation',
     color: 'magenta',
   },
+  [TagEnum.UTILS]: {
+    label: 'javascript utils',
+    color: 'cyan',
+  },
   [TagEnum.TREE]: {
     label: '树组件',
     color: 'green',

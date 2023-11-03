@@ -17,13 +17,6 @@ const JavaScript = () => {
         <p>lodash example - add</p>
         <div>1.333 + 4.666 = {_lodash.add(1.333, 4.666)}</div>
       </div>
-      <div className={comStyles.ModalContainer}>
-        <p>
-          <Link href="https://underscorejs.net/">Underscore</Link>
-        </p>
-        <p>underscore example - isBoolean</p>
-        <div>isBoolean('sss'): {_underscore.isBoolean('sss') + ''}</div>
-      </div>
     </div>
   );
 };

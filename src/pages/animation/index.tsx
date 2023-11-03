@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useLocation } from 'umi';
 import { Tabs } from 'antd';
 import styles from './index.less';
-import { StaticStyle } from './StaticStyle';
 import { AnimationStyle } from './AnimationStyle';
 import { AnimationCss } from './AnimationCss';
 import { WowStyle } from './WowStyle';
@@ -25,10 +24,7 @@ const Style = (props: StyleProps) => {
     <div className={styles.StyleContainer}>
       <h1>Style</h1>
 
-      <Tabs defaultActiveKey="StaticStyle">
-        <TabPane tab="静态样式" key="StaticStyle">
-          <StaticStyle />
-        </TabPane>
+      <Tabs defaultActiveKey="AnimationStyle">
         <TabPane tab="手写动画" key="AnimationStyle">
           <AnimationStyle />
         </TabPane>
