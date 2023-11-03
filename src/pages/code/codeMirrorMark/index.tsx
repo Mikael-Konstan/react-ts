@@ -18,7 +18,7 @@ const CodeMirrorMark = () => {
     <div>
       <h1>
         <Link href="https://codemirror.net/5/doc/manual.html#mark_shared">
-          CodeMirror
+          CodeMirror 插件文档
         </Link>
         Mark
       </h1>

@@ -8,6 +8,11 @@ export const pluginsArticles: Article[] = [
     tags: [tags[TagEnum.CODE]],
   },
   {
+    title: '代码高亮 - CodeHighLight',
+    path: '/code/CodeHighLight',
+    tags: [tags[TagEnum.CODE]],
+  },
+  {
     title: 'Braft',
     path: '/editor/braft',
     tags: [tags[TagEnum.EDITOR]],

@@ -6,10 +6,16 @@ import { visualLen } from '@/components/utils';
 
 interface TextOverFlowProps extends TooltipPropsWithTitle {
   Tooltip?: boolean; // 启用antd的Tooltip
-  OverFlowAll?: boolean; // 不计算长度 全部显示title
+  overflowall?: boolean; // 不计算长度 全部显示title
 }
 
-export const TextOverFlow = (props: TextOverFlowProps) => {
+export const TextOverFlow = (
+  props: TextOverFlowProps = {
+    title: '',
+    Tooltip: false,
+    overflowall: false,
+  },
+) => {
   const [flag, setFlag] = useState<boolean>(false);
   const [line, setLine] = useState<number>(1);
   const [style, setStyle] = useState<CSSProperties>({});
@@ -48,7 +54,7 @@ export const TextOverFlow = (props: TextOverFlowProps) => {
 
   if (props.Tooltip) {
     return (
-      <Tooltip {...props} title={flag || props.OverFlowAll ? props.title : ''}>
+      <Tooltip {...props} title={flag || props.overflowall ? props.title : ''}>
         <div
           ref={divRef}
           className={`${styles.TextOverflowBase} ${
@@ -69,7 +75,7 @@ export const TextOverFlow = (props: TextOverFlowProps) => {
         line > 1 ? styles.TextOverflowMulti : styles.TextOverflowSingle
       }`}
       style={style}
-      title={flag || props.OverFlowAll ? props.title + '' : ''}
+      title={flag || props.overflowall ? props.title + '' : ''}
     >
       {props.title}
     </div>

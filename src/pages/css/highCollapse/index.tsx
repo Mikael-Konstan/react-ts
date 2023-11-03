@@ -1,3 +1,7 @@
+import { useState } from 'react';
+import { Switch } from 'antd';
+import comStyles from '@/pages/common.less';
+import { ArticleLayout } from '@/components';
 import styles from './index.less';
 
 interface HighCollapseProps {}
@@ -11,21 +15,27 @@ const HighCollapse = (props: HighCollapseProps) => {
   ......... 莫辞更坐弹一曲，为君翻作《琵琶行》。
   感我此言良久立，却坐促弦弦转急。 凄凄不似向前声，满座重闻皆掩泣。
   座中泣下谁最多？江州司马青衫湿。`;
+  const [clearFix, setClearFix] = useState(false);
+  const onChange = (checked: boolean) => {
+    setClearFix(checked);
+  };
   return (
-    //高度塌陷
-    <div className={styles.DataListContainer}>
-      <div className={styles.float}>
-        <div className={styles.title}>高度塌陷</div>
+    <ArticleLayout title="高度塌陷">
+      <div className={comStyles.ModalContainer}>
+        <h1>
+          清除浮动&nbsp;
+          <Switch checked={clearFix} onChange={onChange} />
+        </h1>
         <div className={styles.content}>
-          <div className={styles.main}>
+          <div className={`${styles.main} ${clearFix ? styles.clearfix : ''}`}>
             <p>{title}</p>
             <p>{name}</p>
             <p>{content}</p>
           </div>
-          <div className={styles.foot}>页脚</div>
+          <div className={styles.foot}>页脚浮动环绕</div>
         </div>
       </div>
-    </div>
+    </ArticleLayout>
   );
 };
 
