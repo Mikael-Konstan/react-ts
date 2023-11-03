@@ -8,6 +8,11 @@ export * from './index.d';
 
 export const NoteList: NoteListItem[] = [
   {
+    label: 'Plugins',
+    key: 'Plugins',
+    articles: pluginsArticles,
+  },
+  {
     label: 'CSS',
     key: 'CSS',
     articles: cssArticles,
@@ -16,11 +21,6 @@ export const NoteList: NoteListItem[] = [
     label: 'Ant Design React',
     key: 'AntDesignReact',
     articles: antdCompsArticles,
-  },
-  {
-    label: 'Plugins',
-    key: 'Plugins',
-    articles: pluginsArticles,
   },
   {
     label: 'Canvas',

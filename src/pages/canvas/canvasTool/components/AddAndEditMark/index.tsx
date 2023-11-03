@@ -1,6 +1,6 @@
-import { CanvasTool } from '@/pages/PDFJS/canvasTool';
-import { ShapesDataItem } from '@/pages/PDFJS/canvasTool/type';
-import { DrawingTypeEnum } from '@/pages/PDFJS/canvasTool/enum';
+import { CanvasTool } from '@/pages/canvas/canvasTool/canvasTool';
+import { ShapesDataItem } from '@/pages/canvas/canvasTool/canvasTool/type';
+import { DrawingTypeEnum } from '@/pages/canvas/canvasTool/canvasTool/enum';
 import { Button, Input, Modal } from 'antd';
 import { FC, useEffect, useRef, useState } from 'react';
 import './index.less';

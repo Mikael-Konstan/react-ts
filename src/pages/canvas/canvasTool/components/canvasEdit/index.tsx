@@ -1,16 +1,23 @@
 import { IF } from '@/components';
 import { MessageBusContext } from '@/utils/context';
-import { DeleteSvg, DetailSvg, EditSvg } from '@/pages/PDFJS/components/icon';
+import {
+  DeleteSvg,
+  DetailSvg,
+  EditSvg,
+} from '@/pages/canvas/canvasTool/components/icon';
 import {
   ShowDetailModal,
   useShowDetailModal,
-} from '@/pages/PDFJS/components/showDetail';
-import { CanvasTool, getElementClient } from '@/pages/PDFJS/canvasTool';
+} from '@/pages/canvas/canvasTool/components/showDetail';
+import {
+  CanvasTool,
+  getElementClient,
+} from '@/pages/canvas/canvasTool/canvasTool';
 import {
   ShapesDataItem,
   ShapesData,
   ShapeStyle,
-} from '@/pages/PDFJS/canvasTool/type';
+} from '@/pages/canvas/canvasTool/canvasTool/type';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { Modal } from 'antd';
 import { OptionalContentConfig } from 'pdfjs-dist/types/src/display/optional_content_config';

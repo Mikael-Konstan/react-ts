@@ -1,10 +1,13 @@
 export enum TagEnum {
   STYLE = 'style',
+  ANIMATION = 'animation',
   TREE = 'tree',
   EDITOR = 'editor',
   DRAG = 'trag',
-  DRAG_SORT = 'trag_sort',
   VISUALIZATION = 'Visualization',
+  REDUX = 'redux',
+  MOBX = 'mobx',
+  CODE = 'code',
 }
 
 export interface TagItem {

@@ -3,8 +3,8 @@ import { tags } from './tags';
 
 export const canvasArticles: Article[] = [
   {
-    title: 'Canvas Tools',
-    path: '/PDFJS',
+    title: '图像编辑 - Canvas Tools',
+    path: '/canvas/canvasTool',
     tags: [tags[TagEnum.VISUALIZATION]],
   },
 ];

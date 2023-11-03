@@ -1,4 +1,4 @@
-import { FileInfoContext } from '@/pages/PDFJS/context';
+import { FileInfoContext } from '@/pages/canvas/canvasTool/context';
 import { DownloadOutlined } from '@ant-design/icons';
 import { Divider, Button } from 'antd';
 import { FC, useContext } from 'react';

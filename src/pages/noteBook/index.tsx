@@ -94,7 +94,7 @@ const NoteBook = () => {
       >
         <IF condition={keyWord === ''}>
           <Tabs
-            defaultActiveKey="CSS"
+            defaultActiveKey={NoteList[0] && NoteList[0].key}
             tabPosition="left"
             centered
             items={NoteList.map((note, i) => {

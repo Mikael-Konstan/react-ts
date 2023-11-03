@@ -3,7 +3,7 @@ import {
   FileInfoContext,
   FileInfoContextType,
   FileInfoInit,
-} from '@/pages/PDFJS/context';
+} from '@/pages/canvas/canvasTool/context';
 import { FC, useEffect, useMemo, useState } from 'react';
 // import { KeepAlive } from 'umi';
 import PdfJsAll from './components/pdfJsAll';
