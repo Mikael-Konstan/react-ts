@@ -6,8 +6,10 @@ interface LinkProps {
 
 export const Link = ({ href, target = '_blank', children }: LinkProps) => {
   return (
-    <a href={href} target={target} style={{ marginRight: '10px' }}>
-      {children}
-    </a>
+    <h3>
+      <a href={href} target={target} style={{ marginRight: '10px' }}>
+        {children}
+      </a>
+    </h3>
   );
 };

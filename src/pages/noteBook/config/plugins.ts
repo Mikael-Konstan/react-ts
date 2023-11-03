@@ -3,7 +3,7 @@ import { tags } from './tags';
 
 export const pluginsArticles: Article[] = [
   {
-    title: '代码、标签编辑 - CodeMirrorMark',
+    title: '代码、公式编辑 - CodeMirrorMark',
     path: '/code/codeMirrorMark',
     tags: [tags[TagEnum.CODE]],
   },

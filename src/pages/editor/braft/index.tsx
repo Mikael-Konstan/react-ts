@@ -1,5 +1,6 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 import { EditorState } from 'braft-editor';
+import { ArticleLayout } from '@/components';
 import { BraftEditor, Link } from '@/components';
 
 import styles from './index.less';
@@ -14,19 +15,21 @@ export const Braft: FC<BraftProps> = (props) => {
     setWordText(htmlString);
   };
   return (
-    <div className={styles.Braft}>
-      <h1>
-        <Link href="https://www.yuque.com/braft-editor/be/lzwpnr">Braft</Link>
-      </h1>
-      <div className={styles.BraftEditorContainer}>
-        <BraftEditor onChange={onChange}></BraftEditor>
-      </div>
+    <ArticleLayout title="富文本编辑器 - Braft">
+      <div className={styles.Braft}>
+        <Link href="https://www.yuque.com/braft-editor/be/lzwpnr">
+          Braft文档
+        </Link>
+        <div className={styles.BraftEditorContainer}>
+          <BraftEditor onChange={onChange}></BraftEditor>
+        </div>
 
-      <div
-        className={styles.BraftPreviewContainer}
-        dangerouslySetInnerHTML={{ __html: wordText }}
-      ></div>
-    </div>
+        <div
+          className={styles.BraftPreviewContainer}
+          dangerouslySetInnerHTML={{ __html: wordText }}
+        ></div>
+      </div>
+    </ArticleLayout>
   );
 };
 

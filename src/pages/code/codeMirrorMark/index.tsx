@@ -1,8 +1,7 @@
-import { CSSProperties, FC, useState } from 'react';
 import { Button } from 'antd';
-import styles from './index.less';
 import { AddFieldModal, useAddFieldModal, Link } from '@/components';
 import { fieldListDefault } from '@/components/config';
+import { ArticleLayout } from '@/components';
 
 const CodeMirrorMark = () => {
   const addField = useAddFieldModal();
@@ -15,18 +14,13 @@ const CodeMirrorMark = () => {
     console.log(fieldFormula, formulaConfig);
   };
   return (
-    <div>
-      <h1>
-        <Link href="https://codemirror.net/5/doc/manual.html#mark_shared">
-          CodeMirror 插件文档
-        </Link>
-        Mark
-      </h1>
-      <div>
-        <Button onClick={addFieldClick}>CodeMirror 标签</Button>
-      </div>
+    <ArticleLayout title="CodeMirror 代码编辑">
+      <Link href="https://codemirror.net/5/doc/manual.html#mark_shared">
+        CodeMirror 插件文档
+      </Link>
+      <Button onClick={addFieldClick}>CodeMirror 公式编辑</Button>
       <AddFieldModal {...addField.getProps(AddFieldConfirm)}></AddFieldModal>
-    </div>
+    </ArticleLayout>
   );
 };
 

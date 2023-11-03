@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Switch } from 'antd';
-import comStyles from '@/pages/common.less';
 import { ArticleLayout } from '@/components';
 import styles from './index.less';
 
@@ -21,19 +20,17 @@ const HighCollapse = (props: HighCollapseProps) => {
   };
   return (
     <ArticleLayout title="高度塌陷">
-      <div className={comStyles.ModalContainer}>
-        <h1>
-          清除浮动&nbsp;
-          <Switch checked={clearFix} onChange={onChange} />
-        </h1>
-        <div className={styles.content}>
-          <div className={`${styles.main} ${clearFix ? styles.clearfix : ''}`}>
-            <p>{title}</p>
-            <p>{name}</p>
-            <p>{content}</p>
-          </div>
-          <div className={styles.foot}>页脚浮动环绕</div>
+      <h1>
+        清除浮动&nbsp;
+        <Switch checked={clearFix} onChange={onChange} />
+      </h1>
+      <div className={styles.content}>
+        <div className={`${styles.main} ${clearFix ? styles.clearfix : ''}`}>
+          <p>{title}</p>
+          <p>{name}</p>
+          <p>{content}</p>
         </div>
+        <div className={styles.foot}>页脚浮动环绕</div>
       </div>
     </ArticleLayout>
   );

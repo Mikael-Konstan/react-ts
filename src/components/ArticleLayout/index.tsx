@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { Link } from '@/components';
+import comStyles from '@/pages/common.less';
 import styles from './index.less';
 
 interface ArticleLayoutProps {
@@ -15,7 +16,7 @@ export const ArticleLayout: FC<ArticleLayoutProps> = ({ title, children }) => {
           NoteBook
         </Link>
       </div>
-      {children}
+      <div className={comStyles.ModalContainer}>{children}</div>
     </div>
   );
 };

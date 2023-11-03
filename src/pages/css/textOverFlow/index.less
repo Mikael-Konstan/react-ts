@@ -8,78 +8,13 @@
   .textOverflowMulti(2);
 }
 
-.StyleContainer {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: auto;
-}
-
-.DataListContainer {
-  max-width: 800px;
-  display: flex;
-  flex-direction: column;
-  background: #fff;
-  border: 1px solid #ccc;
-  margin: 16px;
-  padding: 16px;
-
-  > div {
-    display: flex;
-    margin-bottom: 16px;
-    .title {
-      flex: 2;
-      font-weight: 800;
-    }
-    .content {
-      max-width: 380px;
-      flex: 3;
-    }
-  }
-
-  .float {
-    .content {
-      .main {
-        width: 100%;
-        .clearfix();
-        p {
-          float: left;
-          margin-right: 10px;
-        }
-      }
-    }
-  }
-}
-
-.BtnContainer {
-  width: 480px;
-  margin-top: 16px;
-  background: #fff;
-  box-shadow: 0px 0px 9px 0px rgba(225, 227, 239, 0.66);
-  padding: 16px;
-
-  button {
-    margin-right: 16px;
-    margin-bottom: 16px;
-  }
-}
-
-.rightContainer {
-  width: 480px;
-  background: #fff;
-  box-shadow: 0px 0px 9px 0px rgba(225, 227, 239, 0.66);
-  padding: 16px;
-  position: absolute;
-  top: 120px;
-  right: -480px;
-}
-
 .textContainerAll {
   width: 570px;
   height: 80px;
   font-size: 14px;
   line-height: 20px;
   display: flex;
+  margin-bottom: 24px;
   .textContainer {
     border: 1px solid #ccc;
     margin-right: 10px;
@@ -90,29 +25,6 @@
   }
 }
 
-.AnimationStyleContainer {
-  position: relative;
-  overflow: hidden;
-  min-height: 1000px;
-}
-
-.AnimateCssContainer {
-  margin-left: 40px;
-
-  div {
-    width: 300px;
-    height: 300px;
-    margin: 60px;
-    list-style: none;
-    border-radius: 50%;
-    text-align: center;
-    vertical-align: middle;
-    align-items: center;
-    line-height: 300px;
-    background-color: #409eff;
-
-    animate-duration: 2s; //动画持续时间
-    animate-delay: 1s; //动画延迟时间
-    animate-iteration-count: 2; //动画执行次数
-  }
+.content {
+  margin-top: 16px;
 }

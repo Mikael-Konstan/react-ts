@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Radio } from 'antd';
 import type { RadioChangeEvent } from 'antd';
 import styles from './index.less';
-import comStyles from '@/pages/common.less';
 import { ArticleLayout, TextOverFlow } from '@/components';
 
 const innerText = 'aASLHD';
@@ -60,82 +59,69 @@ const textOverFlow = (props: TextOverFlowProps) => {
   return (
     <ArticleLayout title="文本超出">
       {/* 单行文本超出 */}
-      <div className={comStyles.ModalContainer}>
-        <div className={styles.textContainerAll} style={{ height: '50px' }}>
-          <div className={styles.textContainer}>
-            <TextOverFlow title="无论长度 显示title" overflowall={true} />
-          </div>
-          <div className={styles.textContainer}>
-            <TextOverFlow title={`不使用antd的Tooltip ${innerText2}`} />
-          </div>
-          <div className={styles.textContainer}>
-            <a
-              style={{
-                display: 'inline-block',
-                width: '100%',
-                height: '100%',
-              }}
-            >
-              <TextOverFlow
-                title={`使用antd的Tooltip ${innerText3}`}
-                Tooltip={true}
-                placement="left"
-              />
-            </a>
-          </div>
+      <div className={styles.textContainerAll} style={{ height: '50px' }}>
+        <div className={styles.textContainer}>
+          <TextOverFlow title="无论长度 显示title" overflowall={true} />
+        </div>
+        <div className={styles.textContainer}>
+          <TextOverFlow title={`不使用antd的Tooltip ${innerText2}`} />
+        </div>
+        <div className={styles.textContainer}>
+          <a
+            style={{
+              display: 'inline-block',
+              width: '100%',
+              height: '100%',
+            }}
+          >
+            <TextOverFlow
+              title={`使用antd的Tooltip ${innerText3}`}
+              Tooltip={true}
+              placement="left"
+            />
+          </a>
         </div>
       </div>
       {/* 多行文本超出 */}
-      <div className={comStyles.ModalContainer}>
-        <div className={styles.textContainerAll}>
-          <div className={styles.textContainer}>
-            <TextOverFlow title={innerText} />
-          </div>
-          <div className={styles.textContainer}>
-            <TextOverFlow title={innerText2} />
-          </div>
-          <div className={styles.textContainer}>
-            <a
-              style={{
-                display: 'inline-block',
-                width: '100%',
-                height: '100%',
-              }}
-            >
-              <TextOverFlow
-                title={`多行文字显示省略号 ${innerText3}`}
-                Tooltip={true}
-                placement="top"
-              />
-            </a>
-          </div>
+      <div className={styles.textContainerAll}>
+        <div className={styles.textContainer}>
+          <TextOverFlow title={innerText} />
+        </div>
+        <div className={styles.textContainer}>
+          <TextOverFlow title={innerText2} />
+        </div>
+        <div className={styles.textContainer}>
+          <a
+            style={{
+              display: 'inline-block',
+              width: '100%',
+              height: '100%',
+            }}
+          >
+            <TextOverFlow
+              title={`多行文字显示省略号 ${innerText3}`}
+              Tooltip={true}
+              placement="top"
+            />
+          </a>
         </div>
       </div>
 
       {/* 样式切换 */}
-      <div className={comStyles.ModalContainer}>
-        <Radio.Group
-          buttonStyle="solid"
-          onChange={onRadioChange}
-          value={textOverflow}
-        >
-          {arr.map((item) => {
-            return (
-              <Radio.Button key={item.value} value={item.value}>
-                {item.label}
-              </Radio.Button>
-            );
-          })}
-        </Radio.Group>
-      </div>
-      <div
-        style={{
-          padding: '0px 16px',
-        }}
-        className={`${comStyles.ModalContainer} ${
-          styles.content
-        } ${getClassName()}`}
+      <Radio.Group
+        buttonStyle="solid"
+        onChange={onRadioChange}
+        value={textOverflow}
       >
+        {arr.map((item) => {
+          return (
+            <Radio.Button key={item.value} value={item.value}>
+              {item.label}
+            </Radio.Button>
+          );
+        })}
+      </Radio.Group>
+      <div className={`${styles.content} ${getClassName()}`}>
         {title}
         {name}
         {content}

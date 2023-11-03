@@ -16,7 +16,7 @@ const Copy = () => {
           <span id="copyLink2">https://cn.vuejs.org/v2/api/</span>
           <span className="copyBtn2">复制链接</span>
         </div>
-        <input type="text" />
+        <input className={styles.ipt} type="text" />
       </div>
     </div>
   );
